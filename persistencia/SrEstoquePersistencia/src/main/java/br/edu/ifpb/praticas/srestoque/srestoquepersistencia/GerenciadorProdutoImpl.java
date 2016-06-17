@@ -37,12 +37,24 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
 
     @Override
     public void atualizarProduto(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.getTransaction().begin();
+        if(!em.contains(produto)){
+            em.refresh(produto);
+            em.flush();
+        }
+        em.getTransaction().commit();
+    
     }
 
     @Override
     public void removerProduto(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.getTransaction().begin();
+        if(!em.contains(produto)){
+            em.remove(produto);
+            em.flush();
+        }
+        em.getTransaction().commit();
+    
     }
 
     @Override

@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.srestoquepersistencia;
-
+package br.edu.ifpb.praticas.srestoque.controladores;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
- * @author Marcus Vinícius
+ * @author vmvini
  */
-public interface GerenciadorEntrada {
+public interface EntradaControlador {
     
     public void salvarEntrada(Entrada entrada);
     

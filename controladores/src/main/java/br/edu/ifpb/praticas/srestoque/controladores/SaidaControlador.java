@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.srestoquepersistencia;
+package br.edu.ifpb.praticas.srestoque.controladores;
 
+import br.edu.ifpb.praticas.srestoque.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaSaidaRealizada;
 import br.edu.ifpb.praticas.srestoque.exceptions.SaidaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Saida;
@@ -13,13 +14,13 @@ import java.util.List;
 
 /**
  *
- * @author Marcus Vinícius
+ * @author vmvini
  */
-public interface GerenciadorSaida {
+public interface SaidaControlador {
     
-    public void salvarSaida(Saida saida);
+    public void salvarSaida(Saida saida) throws EstoqueNaoSuficiente;
     
-    public void atualizarSaida(Saida saida);
+    public void atualizarSaida(Saida saida) throws EstoqueNaoSuficiente;
     
     public List<Saida> listarSaidas() throws NenhumaSaidaRealizada;
     
@@ -32,5 +33,6 @@ public interface GerenciadorSaida {
     public List<Saida> pesquisarPorQuantidade(int quantidade) throws SaidaNaoEncontrada;
     
     public void removerSaida(Saida saida) throws SaidaNaoEncontrada;
+    
     
 }
