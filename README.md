@@ -1,7 +1,7 @@
 #srestoque
 Sistemma de Estoque Sr. Estoque
 
-#Passos para colaboração
+#FLUXO DE TRABALHO A SER SEGUIDO
 
 **1- clone esse repositório**
 
@@ -33,7 +33,7 @@ Sistemma de Estoque Sr. Estoque
 
 ` git merge origin/bLAERTON_EXEMPLO `
 
-**7- Finalmente faça suas alterações e então comite e faça push **
+**7- Finalmente faça suas alterações e então comite e faça push**
 
 ` git add . `
 
