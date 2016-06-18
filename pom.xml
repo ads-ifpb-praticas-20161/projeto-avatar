@@ -1,0 +1,15 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.edu.ifpb.praticas.srestoque</groupId>
+    <artifactId>agregador</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+		<module>SrEstoqueEntidades</module>
+		<module>SrEstoquePersistencia</module>
+       	<module>regras_de_negocio</module>
+        <module>clientedesktop</module>
+     </modules>
+</project>
+
