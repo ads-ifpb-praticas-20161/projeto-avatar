@@ -21,7 +21,7 @@ Sistemma de Estoque Sr. Estoque
 
 ` git push origin bNOME_DA_SUA_BRANCH `
 
-**5- Ao implementar alguma funcionalidade, antes de tudo, verifique as outras branchs possuem atualizações**
+**5- Antes de implementar alguma funcionalidade, verifique as outras branchs possuem atualizações**
 
 ` git pull origin bVMVINI `
 
@@ -41,4 +41,5 @@ Sistemma de Estoque Sr. Estoque
 
 ` git push origin bNOME_DA_SUA_BRANCH `
 
+**8- Sempre repita os passos 5 e 6 antes de realizar mudanças. Isso ajuda a evitar conflitos**
 
