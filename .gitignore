@@ -1,3 +1,4 @@
 /persistencia/SrEstoquePersistencia/target/
 /entidades/SrEstoqueEntidades/target/
-/controladores/target/
+/regras_de_negocio/target/
+/clientedesktop/target/
