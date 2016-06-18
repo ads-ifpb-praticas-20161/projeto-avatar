@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.controladores;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author vmvini
  */
-public interface EntradaControlador {
+public interface EntradaRN {
     
     public void salvarEntrada(Entrada entrada);
     

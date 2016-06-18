@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.controladores;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
-import br.edu.ifpb.praticas.srestoque.exceptions.ErroValidacaoProduto;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumProdutoCadastrado;
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author vmvini
  */
-public interface ProdutoControlador {
+public interface ProdutoRN {
     
    public void salvarProduto(Produto produto) throws ErroValidacaoProduto;
     
@@ -29,6 +29,5 @@ public interface ProdutoControlador {
     public List<Produto> buscarPorDescricao(String descricao) throws ProdutoNaoEncontrado;
     
     public List<Produto> listarProdutos() throws NenhumProdutoCadastrado;
-    
-    
+
 }

@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.exceptions;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 /**
  *
  * @author vmvini
  */
-public class EstoqueNaoSuficiente extends Exception {
+public interface RelatorioRN {
     
-    public EstoqueNaoSuficiente(String msg){
-        super(msg);
-    }
+    void gerarRelatorio();
+    
+    void abrirRelatorio();
+    
+    
     
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.controladores;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
-import br.edu.ifpb.praticas.srestoque.exceptions.EstoqueNaoSuficiente;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaSaidaRealizada;
 import br.edu.ifpb.praticas.srestoque.exceptions.SaidaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Saida;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author vmvini
  */
-public interface SaidaControlador {
+public interface SaidaRN {
     
     public void salvarSaida(Saida saida) throws EstoqueNaoSuficiente;
     
