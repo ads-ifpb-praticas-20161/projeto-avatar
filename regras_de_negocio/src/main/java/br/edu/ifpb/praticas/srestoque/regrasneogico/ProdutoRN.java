@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.ErroValidacaoProduto;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumProdutoCadastrado;
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;

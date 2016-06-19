@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.EstoqueNaoSuficiente;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaSaidaRealizada;
 import br.edu.ifpb.praticas.srestoque.exceptions.SaidaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Saida;

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.regrasnegocio;
+package br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions;
 
 /**
  *
  * @author vmvini
  */
-public class EstoqueNaoSuficiente extends Exception {
+public class ErroValidacaoProduto extends Exception{
     
-    public EstoqueNaoSuficiente(String msg){
+    public ErroValidacaoProduto(String msg){
         super(msg);
     }
     
