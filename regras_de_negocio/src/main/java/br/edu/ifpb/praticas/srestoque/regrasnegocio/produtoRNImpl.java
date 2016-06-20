@@ -27,12 +27,16 @@ public class produtoRNImpl implements ProdutoRN{
 
     @Override
     public void salvarProduto(Produto produto) throws ErroValidacaoProduto {
-        if (produto.getDescricao().trim().equals("")){
+        if (produto.getDescricao().trim().equals("") ){
             throw  new ErroValidacaoProduto("Produto não pode conter descrição vazia ou em branco.");
+        }
+        if (produto.getDescricao() == null){
+            throw  new ErroValidacaoProduto("Produto não pode conter descrição nula.");
         }
         if (produto.getValor() <=0){
             throw  new ErroValidacaoProduto("Produto não pode conter valor negátivos ou zero.");
         }
+        
         gp.salvarProduto(produto);
     }
 

@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.praticas.srestoque.clientedesktop;
 
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -13,6 +14,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.produtoRNImpl;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -21,11 +26,13 @@ import javax.swing.text.MaskFormatter;
 public class JIProduto extends javax.swing.JInternalFrame {
 
     private Produto produto;
+    private produtoRNImpl rp;
     /**
      * Creates new form JIProduto
      */
     public JIProduto() {
         initComponents();
+        rp = new produtoRNImpl();
         jPanel1.setVisible(false);
 //formatMask();
     }
@@ -57,6 +64,7 @@ public class JIProduto extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
@@ -101,6 +109,11 @@ public class JIProduto extends javax.swing.JInternalFrame {
         });
 
         jButton3.setText("Sair");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton3MousePressed(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -132,6 +145,10 @@ public class JIProduto extends javax.swing.JInternalFrame {
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 143, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +160,9 @@ public class JIProduto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
@@ -166,7 +185,7 @@ public class JIProduto extends javax.swing.JInternalFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -175,19 +194,22 @@ public class JIProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        jTextField1.setText("");
+        jFormattedTextField1.setText("");
         jPanel1.setVisible(true);
         produto = new Produto();
         
     }//GEN-LAST:event_jButton2MousePressed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jTextField1.setText("");
-        jFormattedTextField1.setText("");
-        jPanel1.setVisible(false);
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText("");
+        jFormattedTextField1.setText("");
+        jPanel1.setVisible(true);
+        produto = new Produto();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -196,8 +218,24 @@ public class JIProduto extends javax.swing.JInternalFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         produto.setDescricao(jTextField1.getText());
-        produto.setValor(Float.parseFloat(jFormattedTextField1.getText()));
+            String valor = jFormattedTextField1.getText().replace(",", ".");
+            if (valor.isEmpty()){
+                valor = "0";
+            }
+            produto.setValor(new Float(valor));
+        try {
+            rp.salvarProduto(produto);
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+            jButton2MousePressed(evt);
+        } catch (ErroValidacaoProduto ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        
+        }
     }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
+        jPanel1.setVisible(false);
+    }//GEN-LAST:event_jButton3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,6 +245,7 @@ public class JIProduto extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
