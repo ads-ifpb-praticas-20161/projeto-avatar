@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.regrasnegocio;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.regrasneogico.EntradaRN;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorEntrada;

@@ -7,7 +7,7 @@ package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.EstoqueNaoSuficiente;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
 import java.util.Date;
 import java.util.List;
