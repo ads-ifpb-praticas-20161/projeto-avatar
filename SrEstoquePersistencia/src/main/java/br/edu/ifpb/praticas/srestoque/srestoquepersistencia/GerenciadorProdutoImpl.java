@@ -59,7 +59,11 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
 
     @Override
     public Produto buscarPorId(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.getTransaction().begin();
+        Produto produto = em.getReference(Produto.class, id);
+        em.getTransaction().commit();
+        return produto;
+    
     }
 
     @Override
