@@ -7,6 +7,7 @@ package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface EntradaRN {
     
-    public void salvarEntrada(Entrada entrada);
+    public void salvarEntrada(Entrada entrada) throws EstoqueNaoSuficiente;
     
     public void atualizarEntrada(Entrada entrada) throws EntradaNaoEncontrada;
     
