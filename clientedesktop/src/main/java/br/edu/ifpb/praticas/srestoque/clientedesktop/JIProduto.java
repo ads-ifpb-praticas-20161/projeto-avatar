@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.praticas.srestoque.clientedesktop;
 
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.ErroValidacaoProduto;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.produtoRNImpl;
+import br.edu.ifpb.praticas.srestoque.regrasneogico.produtoRNImpl;
 import javax.swing.JOptionPane;
 
 

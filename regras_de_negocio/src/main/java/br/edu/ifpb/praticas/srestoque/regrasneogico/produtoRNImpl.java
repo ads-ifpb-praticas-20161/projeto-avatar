@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.srestoque.regrasnegocio;
+package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumProdutoCadastrado;
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.regrasneogico.ProdutoRN;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorProdutoImpl;
