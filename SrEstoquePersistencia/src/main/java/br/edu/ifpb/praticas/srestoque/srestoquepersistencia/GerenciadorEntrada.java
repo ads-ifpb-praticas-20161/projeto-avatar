@@ -23,6 +23,8 @@ public interface GerenciadorEntrada {
     
     /*Método atualizar removido pois o metodo salvar atualiza caso já exista no banco*/
     
+    public Entrada buscarPorId(int id) throws EntradaNaoEncontrada;
+    
     public List<Entrada> listarEntradas() throws NenhumaEntradaRealizada;
     
     public List<Entrada> pesquisarPorData(Date date) throws EntradaNaoEncontrada;

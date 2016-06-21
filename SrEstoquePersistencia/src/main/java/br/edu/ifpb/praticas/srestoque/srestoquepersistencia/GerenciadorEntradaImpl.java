@@ -109,6 +109,21 @@ public class GerenciadorEntradaImpl implements GerenciadorEntrada {
     
     }
 
+    @Override
+    public Entrada buscarPorId(int id) throws EntradaNaoEncontrada {
+        try{
+            em.getTransaction().begin();
+            Entrada entrada = em.getReference(Entrada.class, id);
+            em.getTransaction().commit();
+            return entrada;
+        }
+        catch(EntityNotFoundException e){
+            throw new EntradaNaoEncontrada("Entrada de id " + id + " não encontrada");
+        }
+        
+        
+    }
+
    
     
     

@@ -25,6 +25,8 @@ public interface GerenciadorSaida {
     
     public List<Saida> pesquisarPorData(Date date) throws SaidaNaoEncontrada;
     
+    public Saida buscarPorId(int id) throws SaidaNaoEncontrada;
+    
     public List<Saida> pesquisarPorProdutoId(int produtoId) throws SaidaNaoEncontrada;
     
     public List<Saida> pesquisarPorProdutoDescricao(String produtoDescricao) throws SaidaNaoEncontrada;

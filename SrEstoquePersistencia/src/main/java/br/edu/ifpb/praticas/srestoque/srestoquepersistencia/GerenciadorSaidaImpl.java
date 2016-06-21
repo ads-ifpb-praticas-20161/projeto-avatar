@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -98,6 +99,19 @@ public class GerenciadorSaidaImpl implements GerenciadorSaida {
         else
             throw new SaidaNaoEncontrada("Saida " + saida.getData() + " id: " + saida.getId() + " não encontrada");
         em.getTransaction().commit();
+    }
+
+    @Override
+    public Saida buscarPorId(int id) throws SaidaNaoEncontrada {
+         try{
+            em.getTransaction().begin();
+            Saida saida = em.getReference(Saida.class, id);
+            em.getTransaction().commit();
+            return saida;
+        }
+        catch(EntityNotFoundException e){
+            throw new SaidaNaoEncontrada("Saida de id " + id + " não encontrada");
+        }
     }
     
    
