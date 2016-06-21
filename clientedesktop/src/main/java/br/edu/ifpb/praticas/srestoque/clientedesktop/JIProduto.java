@@ -222,15 +222,19 @@ public class JIProduto extends javax.swing.JInternalFrame {
             if (valor.isEmpty()){
                 valor = "0";
             }
-            produto.setValor(new Float(valor));
-        try {
-            rp.salvarProduto(produto);
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
-            jButton2MousePressed(evt);
-        } catch (ErroValidacaoProduto ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            try{
+                produto.setValor(new Float(valor));
+                try {
+                    rp.salvarProduto(produto);
+                    JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+                    jButton2MousePressed(evt);
+                } catch (ErroValidacaoProduto ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }catch(RuntimeException e){
+                 JOptionPane.showMessageDialog(null, "Digite somente valores numéricos!");
+            }
         
-        }
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
