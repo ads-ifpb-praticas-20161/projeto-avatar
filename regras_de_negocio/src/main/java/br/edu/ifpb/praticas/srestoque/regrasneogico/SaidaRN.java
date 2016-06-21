@@ -7,6 +7,7 @@ package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaSaidaRealizada;
 import br.edu.ifpb.praticas.srestoque.exceptions.SaidaNaoEncontrada;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoSaida;
 import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Saida;
 import java.util.Date;
@@ -18,9 +19,9 @@ import java.util.List;
  */
 public interface SaidaRN {
     
-    public void salvarSaida(Saida saida) throws EstoqueNaoSuficiente;
+    public void salvarSaida(Saida saida) throws EstoqueNaoSuficiente, ErroValidacaoSaida;
     
-    public void atualizarSaida(Saida saida) throws EstoqueNaoSuficiente;
+    public void atualizarSaida(Saida saida) throws EstoqueNaoSuficiente, ErroValidacaoSaida;
     
     public List<Saida> listarSaidas() throws NenhumaSaidaRealizada;
     
