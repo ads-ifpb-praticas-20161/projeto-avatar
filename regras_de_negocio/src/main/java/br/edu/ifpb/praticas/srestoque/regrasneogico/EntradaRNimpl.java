@@ -8,7 +8,7 @@ package br.edu.ifpb.praticas.srestoque.regrasneogico;
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
-import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoEntrada;
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoEntrada;    
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorEntrada;
@@ -67,14 +67,20 @@ public class EntradaRNimpl implements EntradaRN{
         if(entrada.getProduto() == null)
             throw new ErroValidacaoEntrada("O produto deve ser informado");
         
-        ge.salvarEntrada(entrada);
+        
         try {
             Produto p = gp.buscarPorId(entrada.getProduto().getId());
-            int estoqueSemEssaEntrada = p.getEstoque() - entrada.getQuantidade();
+            //removendo do estoque de produto a quantidade da entrada antes de ser atualizada
+            //para que depois o estoque do produto seja atualizado corretamente
+            int estoqueSemEssaEntrada = p.getEstoque() - ge.buscarPorId(entrada.getId()).getQuantidade();
             p.setEstoque(estoqueSemEssaEntrada + entrada.getQuantidade());
+            ge.salvarEntrada(entrada);
             gp.salvarProduto(p);
         } catch (ProdutoNaoEncontrado ex) {
             throw new ErroValidacaoEntrada("O produto informado não existe");
+        }
+        catch(EntradaNaoEncontrada ex){
+            throw new ErroValidacaoEntrada("Essa entrada não existe");
         }
     }
 
