@@ -54,6 +54,8 @@ public class PesquisarProduto extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jTextField1.setText("Pesquise aqui");
 
         jRadioButton1.setText("Descrição");
