@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import br.edu.ifpb.praticas.srestoque.regrasneogico.produtoRNImpl;
+import br.edu.ifpb.praticas.srestoque.regrasneogico.ProdutoRNImpl;
 import javax.swing.JOptionPane;
 
 
@@ -26,13 +26,13 @@ import javax.swing.JOptionPane;
 public class JIProduto extends javax.swing.JInternalFrame {
 
     private Produto produto;
-    private produtoRNImpl rp;
+    private ProdutoRNImpl rp;
     /**
      * Creates new form JIProduto
      */
     public JIProduto() {
         initComponents();
-        rp = new produtoRNImpl();
+        rp = new ProdutoRNImpl();
         jPanel1.setVisible(false);
 //formatMask();
     }

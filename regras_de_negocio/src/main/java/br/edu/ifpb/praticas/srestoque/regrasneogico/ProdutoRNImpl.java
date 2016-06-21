@@ -17,10 +17,10 @@ import java.util.List;
  *
  * @author laerton
  */
-public class produtoRNImpl implements ProdutoRN{
+public class ProdutoRNImpl implements ProdutoRN{
     private GerenciadorProdutoImpl gp ;
 
-    public produtoRNImpl() {
+    public ProdutoRNImpl() {
         gp = new GerenciadorProdutoImpl();
     }
     

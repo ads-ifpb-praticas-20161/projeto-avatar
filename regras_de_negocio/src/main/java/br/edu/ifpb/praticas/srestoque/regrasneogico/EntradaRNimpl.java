@@ -7,12 +7,18 @@ package br.edu.ifpb.praticas.srestoque.regrasneogico;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
+import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
 import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.EstoqueNaoSuficiente;
 import br.edu.ifpb.praticas.srestoque.regrasneogico.EntradaRN;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
+import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorEntrada;
+import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorProduto;
+import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorProdutoImpl;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,9 +27,9 @@ import java.util.List;
 public class EntradaRNimpl implements EntradaRN{
 
     private GerenciadorEntrada ge;
-
+    private GerenciadorProduto gp;
     public EntradaRNimpl() {
-        
+        gp = new GerenciadorProdutoImpl();
     }
     
     
@@ -33,6 +39,14 @@ public class EntradaRNimpl implements EntradaRN{
             throw new EstoqueNaoSuficiente("Quantidade da entrada deve ser um valor positivo maior que zero.");
         } 
         ge.salvarEntrada(entrada);
+        try {
+            Produto p = gp.buscarPorId(entrada.getProduto().getId());
+            p.setEstoque(p.getEstoque() + entrada.getQuantidade());
+            gp.salvarProduto(p);
+        } catch (ProdutoNaoEncontrado ex) {
+            Logger.getLogger(EntradaRNimpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     @Override
@@ -91,6 +105,13 @@ public class EntradaRNimpl implements EntradaRN{
     @Override
     public void removerEntrada(Entrada entrada) throws EntradaNaoEncontrada {
         ge.removerEntrada(entrada);
+        try {
+            Produto p = gp.buscarPorId(entrada.getProduto().getId());
+            p.setEstoque(p.getEstoque()- entrada.getQuantidade());
+        } catch (ProdutoNaoEncontrado ex) {
+            Logger.getLogger(EntradaRNimpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }
