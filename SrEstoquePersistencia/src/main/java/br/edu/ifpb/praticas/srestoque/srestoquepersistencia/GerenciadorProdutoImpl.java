@@ -24,33 +24,19 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
     private EntityManager em;
     
     public GerenciadorProdutoImpl(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("srEstoquePU");
-        em = emf.createEntityManager();
+        em = EntityManagerCreator.getInstance().getEntityManager();
     }
     
     
     @Override
     public void salvarProduto(Produto produto) {
         em.getTransaction().begin();
-        if(!em.contains(produto)){
-            em.persist(produto);
-            em.flush();
-        }
+        em.persist(produto);
+        em.flush();
         em.getTransaction().commit();
     }
 
-    @Override
-    public void atualizarProduto(Produto produto) throws ProdutoNaoEncontrado {
-        em.getTransaction().begin();
-        if(em.contains(produto)){
-            em.refresh(produto);
-            em.flush();
-        }
-        else
-            throw new ProdutoNaoEncontrado("Produto " + produto.getDescricao() + " id: " + produto.getId() + " nao existe");
-        em.getTransaction().commit();
     
-    }
 
     @Override
     public void removerProduto(Produto produto) throws ProdutoNaoEncontrado{
@@ -84,7 +70,7 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
     @Override
     public List<Produto> buscarPorDescricao(String descricao) throws ProdutoNaoEncontrado{
         
-        Query query = em.createQuery("SELECT p FROM produto p WHERE p.descricao LIKE CONCAT('%', ?1, '%')");
+        Query query = em.createQuery("SELECT p FROM Produto p WHERE p.descricao LIKE CONCAT('%', ?1, '%')");
         query.setParameter(1, descricao);
         List<Produto> produtos = query.getResultList();
         if(produtos.isEmpty())
@@ -96,7 +82,7 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
     @Override
     public List<Produto> listarProdutos() throws NenhumProdutoCadastrado {
             
-        Query query = em.createQuery("SELECT p FROM produto p");
+        Query query = em.createQuery("SELECT p FROM Produto p");
         List<Produto> produtos = query.getResultList();
         if(produtos.isEmpty())
             throw new NenhumProdutoCadastrado("Não existe nenhum produto cadastrado.");
