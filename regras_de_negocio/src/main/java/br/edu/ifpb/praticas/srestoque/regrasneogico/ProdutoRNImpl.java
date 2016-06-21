@@ -17,10 +17,10 @@ import java.util.List;
  *
  * @author laerton
  */
-public class produtoRNImpl implements ProdutoRN{
+public class ProdutoRNImpl implements ProdutoRN{
     private GerenciadorProdutoImpl gp ;
 
-    public produtoRNImpl() {
+    public ProdutoRNImpl() {
         gp = new GerenciadorProdutoImpl();
     }
     
@@ -43,10 +43,7 @@ public class produtoRNImpl implements ProdutoRN{
 
     @Override
     public void atualizarProduto(Produto produto) throws ProdutoNaoEncontrado, ErroValidacaoProduto {
-        if (produto.getDescricao().trim().equals("")){
-            throw  new ErroValidacaoProduto("Produto não pode conter descrição vazia ou em branco.");
-        }
-        gp.atualizarProduto(produto);
+        salvarProduto(produto);
     }
 
     @Override
@@ -56,27 +53,17 @@ public class produtoRNImpl implements ProdutoRN{
 
     @Override
     public Produto buscarPorId(int id) throws ProdutoNaoEncontrado {
-        if (id <=0){
-            throw  new ProdutoNaoEncontrado("Id para busca deve ser um valor positivo maior que zero.");
-        }
         return gp.buscarPorId(id);
     }
 
     @Override
     public List<Produto> buscarPorDescricao(String descricao) throws ProdutoNaoEncontrado {
-        if (descricao.trim().equals("")){
-            throw  new ProdutoNaoEncontrado("Descrição para buscar produto não pode ser vazia ou em branco.");
-        }
-            return gp.buscarPorDescricao(descricao);
+        return gp.buscarPorDescricao(descricao);
     }
 
     @Override
     public List<Produto> listarProdutos() throws NenhumProdutoCadastrado {
-        List<Produto> lista = gp.listarProdutos();
-        if (lista.size()==0){
-            throw  new NenhumProdutoCadastrado("Não há produtos cadastrados");
-        }
-        return lista;
+        return gp.listarProdutos();
     }
     
 }

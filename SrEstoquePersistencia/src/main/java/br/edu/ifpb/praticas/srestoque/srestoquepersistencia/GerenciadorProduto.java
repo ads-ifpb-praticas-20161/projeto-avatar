@@ -17,7 +17,7 @@ public interface GerenciadorProduto {
     
     public void salvarProduto(Produto produto);
     
-    public void atualizarProduto(Produto produto) throws ProdutoNaoEncontrado;
+    /*Método atualizar removido pois o metodo salvar atualiza caso já exista no banco*/
     
     public void removerProduto(Produto produto) throws ProdutoNaoEncontrado;
     

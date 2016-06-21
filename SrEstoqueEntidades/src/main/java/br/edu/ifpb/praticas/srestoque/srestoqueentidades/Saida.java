@@ -5,10 +5,15 @@
  */
 package br.edu.ifpb.praticas.srestoque.srestoqueentidades;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author Marcus Vinícius
  */
-public class Saida extends EstoqueMovimento {
+
+@Entity
+public class Saida extends EstoqueMovimento implements Serializable {
     
 }

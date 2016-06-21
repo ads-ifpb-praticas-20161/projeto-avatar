@@ -9,6 +9,7 @@ package br.edu.ifpb.praticas.srestoque.srestoquepersistencia;
 import br.edu.ifpb.praticas.srestoque.exceptions.EntradaNaoEncontrada;
 import br.edu.ifpb.praticas.srestoque.exceptions.NenhumaEntradaRealizada;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada;
+import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import java.util.List;
 import java.util.Date;
 
@@ -20,7 +21,9 @@ public interface GerenciadorEntrada {
     
     public void salvarEntrada(Entrada entrada);
     
-    public void atualizarEntrada(Entrada entrada) throws EntradaNaoEncontrada;
+    /*Método atualizar removido pois o metodo salvar atualiza caso já exista no banco*/
+    
+    public Entrada buscarPorId(int id) throws EntradaNaoEncontrada;
     
     public List<Entrada> listarEntradas() throws NenhumaEntradaRealizada;
     

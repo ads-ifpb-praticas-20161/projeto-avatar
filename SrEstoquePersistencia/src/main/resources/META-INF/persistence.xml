@@ -3,11 +3,13 @@
   <persistence-unit name="srEstoquePU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto</class>
+    <class>br.edu.ifpb.praticas.srestoque.srestoqueentidades.Entrada</class>
+    <class>br.edu.ifpb.praticas.srestoque.srestoqueentidades.Saida</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/srestoque"/>
-      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.user" value="user"/>
     </properties>
   </persistence-unit>
 </persistence>

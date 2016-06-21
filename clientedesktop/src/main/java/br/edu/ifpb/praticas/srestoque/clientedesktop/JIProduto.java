@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import br.edu.ifpb.praticas.srestoque.regrasneogico.produtoRNImpl;
+import br.edu.ifpb.praticas.srestoque.regrasneogico.ProdutoRNImpl;
 import javax.swing.JOptionPane;
 
 
@@ -26,13 +26,13 @@ import javax.swing.JOptionPane;
 public class JIProduto extends javax.swing.JInternalFrame {
 
     private Produto produto;
-    private produtoRNImpl rp;
+    private ProdutoRNImpl rp;
     /**
      * Creates new form JIProduto
      */
     public JIProduto() {
         initComponents();
-        rp = new produtoRNImpl();
+        rp = new ProdutoRNImpl();
         jPanel1.setVisible(false);
 //formatMask();
     }
@@ -222,15 +222,19 @@ public class JIProduto extends javax.swing.JInternalFrame {
             if (valor.isEmpty()){
                 valor = "0";
             }
-            produto.setValor(new Float(valor));
-        try {
-            rp.salvarProduto(produto);
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
-            jButton2MousePressed(evt);
-        } catch (ErroValidacaoProduto ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            try{
+                produto.setValor(new Float(valor));
+                try {
+                    rp.salvarProduto(produto);
+                    JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+                    jButton2MousePressed(evt);
+                } catch (ErroValidacaoProduto ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }catch(RuntimeException e){
+                 JOptionPane.showMessageDialog(null, "Digite somente valores numéricos!");
+            }
         
-        }
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed

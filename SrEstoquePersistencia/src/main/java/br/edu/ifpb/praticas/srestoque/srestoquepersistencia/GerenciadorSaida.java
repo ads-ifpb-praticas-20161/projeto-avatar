@@ -19,11 +19,13 @@ public interface GerenciadorSaida {
     
     public void salvarSaida(Saida saida);
     
-    public void atualizarSaida(Saida saida);
+    /*Método atualizar removido pois o metodo salvar atualiza caso já exista no banco*/
     
     public List<Saida> listarSaidas() throws NenhumaSaidaRealizada;
     
     public List<Saida> pesquisarPorData(Date date) throws SaidaNaoEncontrada;
+    
+    public Saida buscarPorId(int id) throws SaidaNaoEncontrada;
     
     public List<Saida> pesquisarPorProdutoId(int produtoId) throws SaidaNaoEncontrada;
     
