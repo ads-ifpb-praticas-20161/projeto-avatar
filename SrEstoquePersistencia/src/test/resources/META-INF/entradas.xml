@@ -9,7 +9,7 @@ and open the template in the editor.
     
     
     <produto id="0" descricao="junit" estoque="2" valor="0"/>
-    <entrada id="0" data="2009-04-20" quantidade="4" produto="0"/>
-    
+    <entrada id="0" dataa="2009-04-20" quantidade="4" produto="0"/>
+    <saida id="0" dataa="2009-04-20" quantidade="2" produto="0"/>
     
 </dataset>

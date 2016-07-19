@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
@@ -55,7 +56,7 @@ private static final String DB_PASSWORD = "";
     @Before
     public void setUp() throws IOException, DataSetException, DatabaseUnitException, Exception{
         
-        em = Persistence.createEntityManagerFactory("teste").createEntityManager();
+        em = Persistence.createEntityManagerFactory("srEstoquePU").createEntityManager();
         
         FlatXmlDataSetBuilder aBuilder = new FlatXmlDataSetBuilder();
         
@@ -64,44 +65,28 @@ private static final String DB_PASSWORD = "";
         IDataSet dataSet = aBuilder.build(aDataStream);
         
         final IDatabaseConnection connection = new DatabaseConnection(getDatabaseConnection());
-
-        try{
-            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
-        }
-        finally{
-            connection.close();
-        }
-
+            
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+            
+       
     }
     
     private Connection getDatabaseConnection() throws Exception{
-        Class.forName(DB_DRIVER);
-        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        em.getTransaction().begin();
+        java.sql.Connection connection = em.unwrap(java.sql.Connection.class);
+        em.getTransaction().commit();
+        return connection;
     }
     
     
-    @Test(expected = EntityExistsException.class)
+    @Test(expected = RollbackException.class)
     public void testEntradaJaExistente(){
-        try{
-        Produto p = em.find(Produto.class, 0);
         
-        Entrada e = new Entrada();
-        Date d = new Date();
-       
-        e.setData(d);
-        e.setId(0);
-        e.setProduto(p);
-        e.setQuantidade(4);
-        
+        Entrada e = em.find(Entrada.class, 0);
         em.getTransaction().begin();
         em.persist(e);
         em.getTransaction().commit();
-       
-        }
-        catch(Exception ex){
-            System.out.println("PORRA");
-            System.out.println(ex.getMessage());
-        }
+        
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -133,14 +118,7 @@ private static final String DB_PASSWORD = "";
     @After
     public void tearDown() throws Exception{
         em.close();
-
-        final Connection connection = getDatabaseConnection();
-        try{
-            connection.createStatement().execute("SHUTDOWN");
-        }
-        finally{
-            connection.close();
-        }
+        
     }
     
 }
