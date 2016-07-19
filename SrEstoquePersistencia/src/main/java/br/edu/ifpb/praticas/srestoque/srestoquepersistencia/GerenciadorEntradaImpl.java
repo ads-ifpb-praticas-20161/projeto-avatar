@@ -37,7 +37,6 @@ public class GerenciadorEntradaImpl implements GerenciadorEntrada {
     public void salvarEntrada(Entrada entrada) {
         em.getTransaction().begin();
         em.persist(entrada);
-        em.flush();
         em.getTransaction().commit();
     }
 
@@ -56,14 +55,18 @@ public class GerenciadorEntradaImpl implements GerenciadorEntrada {
 
     @Override
     public void removerEntrada(Entrada entrada) throws EntradaNaoEncontrada {
+       
         em.getTransaction().begin();
+        
         if(em.contains(entrada)){
             em.remove(entrada);
-            em.flush();
         }
-        else
-            throw new EntradaNaoEncontrada("Entrada " + entrada.getData() + " id: " + entrada.getId() + " não encontrado");
+        else{
+            Entrada encontrada = buscarPorId(entrada.getId());
+            em.remove(encontrada);
+        }
         em.getTransaction().commit();
+    
     }
 
     @Override
@@ -111,17 +114,11 @@ public class GerenciadorEntradaImpl implements GerenciadorEntrada {
 
     @Override
     public Entrada buscarPorId(int id) throws EntradaNaoEncontrada {
-        try{
-            em.getTransaction().begin();
-            Entrada entrada = em.getReference(Entrada.class, id);
-            em.getTransaction().commit();
-            return entrada;
-        }
-        catch(EntityNotFoundException e){
-            throw new EntradaNaoEncontrada("Entrada de id " + id + " não encontrada");
-        }
         
-        
+        Entrada entrada = em.find(Entrada.class, id);
+        if(entrada == null)
+             throw new EntradaNaoEncontrada("Entrada de id " + id + " não encontrada");
+        return entrada;
     }
 
    
