@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import java.util.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.criteria.Fetch;
 
 /**
@@ -34,6 +37,11 @@ public abstract class EstoqueMovimento implements Serializable {
     @JoinColumn(name = "produto", nullable=false)
     private Produto produto;
     private int quantidade;
+    
+    
+    
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dataa")
     private Date data;
     
     @Override
