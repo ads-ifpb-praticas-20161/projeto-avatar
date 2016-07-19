@@ -80,22 +80,38 @@ private static final String DB_PASSWORD = "";
     }
     
     
-    @Test
+    @Test(expected = EntityExistsException.class)
     public void testEntradaJaExistente(){
-        Entrada e = em.find(Entrada.class, 0);
+        try{
+        Produto p = em.find(Produto.class, 0);
         
-        
+        Entrada e = new Entrada();
+        Date d = new Date();
+       
+        e.setData(d);
+        e.setId(0);
+        e.setProduto(p);
+        e.setQuantidade(4);
         
         em.getTransaction().begin();
         em.persist(e);
         em.getTransaction().commit();
-        
+       
+        }
+        catch(Exception ex){
+            System.out.println("PORRA");
+            System.out.println(ex.getMessage());
+        }
     }
-    /*
+    
     @Test(expected = IllegalArgumentException.class)
     public void entradaNull(){
-        
+        em.getTransaction().begin();
+        em.persist(null);
+        em.getTransaction().commit();
     }
+    
+    /*
     
     @Test(expected = PersistenceException.class)
     public void entradaSemProduto(){
