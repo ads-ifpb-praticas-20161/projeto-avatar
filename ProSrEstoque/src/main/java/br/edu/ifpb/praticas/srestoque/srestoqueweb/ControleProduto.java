@@ -1,6 +1,7 @@
 package br.edu.ifpb.praticas.srestoque.srestoqueweb;
 
 
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoProduto;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorProduto;
 import java.io.Serializable;
@@ -26,11 +27,27 @@ public class ControleProduto implements Serializable {
         produto = new Produto();
     }
 
-    public String salvarProduto() {
+    public String salvarProduto() throws ErroValidacaoProduto {
         if(produto == null){
-            throw new NullPointerException("O produto a ser salvo está nulo!");
+            throw new ErroValidacaoProduto("O produto a ser salvo está nulo!");
+        }
+        if(produto.getDescricao() == null){
+            
+            throw new ErroValidacaoProduto("Descrição nula!");
+        }
+        if(produto.getDescricao().trim().isEmpty()){
+            throw new ErroValidacaoProduto("Descrição vazia!");
+        }
+        
+        if(produto.getValor() <= 0 ){
+            throw  new ErroValidacaoProduto("Produto não pode conter valor negátivos ou zero.");
+        }
+        
+        if(produto.getEstoque() <= 0){
+            throw new ErroValidacaoProduto("Produto não pode conter estoque negativo.");
         }
         gerenciadorProdutoImpl.salvarProduto(produto);
+        
 
         return "index.html";
     }

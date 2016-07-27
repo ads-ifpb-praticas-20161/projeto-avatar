@@ -5,6 +5,8 @@
  */
 package br.edu.ifpb.praticas.srestoque.testesunitarios;
 
+import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoProduto;
+import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Produto;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorProduto;
 import br.edu.ifpb.praticas.srestoque.srestoqueweb.ControleProduto;
 import org.junit.Before;
@@ -35,11 +37,61 @@ public class TestesProduto {
     }
     
     
-    @Test(expected = NullPointerException.class)
-    public void inserirProdutoNull(){
+    @Test(expected = ErroValidacaoProduto.class)
+    public void inserirProdutoNull() throws ErroValidacaoProduto{
         cp.setProduto(null);
         cp.salvarProduto();
         verify(gp).salvarProduto(null);
+    }
+    
+    @Test(expected = ErroValidacaoProduto.class)
+    public void inserirProdutoEstoqueNegativo() throws ErroValidacaoProduto{
+        Produto p = new Produto();
+        p.setEstoque(-10);
+        p.setId(0);
+        p.setValor(10);
+        p.setDescricao("dksjdls");
+         cp.setProduto(p);
+        cp.salvarProduto();
+        verify(gp).salvarProduto(p);
+    }
+    
+    @Test(expected = ErroValidacaoProduto.class)
+    public void inserirProdutoValorNegativo() throws ErroValidacaoProduto{
+        Produto p = new Produto();
+        p.setEstoque(10);
+        p.setId(0);
+        p.setValor(-10);
+        p.setDescricao("dksjdls");
+         cp.setProduto(p);
+        cp.salvarProduto();
+        verify(gp).salvarProduto(p);
+    }
+    
+    @Test(expected = ErroValidacaoProduto.class)
+    public void inserirProdutoDescricaoNula() throws ErroValidacaoProduto{
+        
+        Produto p = new Produto();
+        p.setEstoque(10);
+        p.setId(0);
+        p.setValor(10);
+        //p.setDescricao();
+        cp.setProduto(p);
+        cp.salvarProduto();
+        verify(gp).salvarProduto(p);
+        
+    }
+    
+    @Test(expected = ErroValidacaoProduto.class)
+    public void inserirProdutoDescricaoVazia() throws ErroValidacaoProduto{
+        Produto p = new Produto();
+        p.setEstoque(10);
+        p.setId(0);
+        p.setValor(10);
+        p.setDescricao("    ");
+        cp.setProduto(p);
+        cp.salvarProduto();
+        verify(gp).salvarProduto(p);
     }
     
 }
