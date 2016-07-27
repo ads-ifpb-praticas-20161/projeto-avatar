@@ -27,6 +27,9 @@ public class ControleProduto implements Serializable {
     }
 
     public String salvarProduto() {
+        if(produto == null){
+            throw new NullPointerException("O produto a ser salvo está nulo!");
+        }
         gerenciadorProdutoImpl.salvarProduto(produto);
 
         return "index.html";

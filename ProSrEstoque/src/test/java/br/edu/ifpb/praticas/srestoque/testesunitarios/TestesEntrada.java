@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.praticas.srestoque.testesunitarios;
 
-import org.junit.Test;
 
 /**
  *
@@ -15,7 +14,8 @@ import org.junit.Test;
 
 public class TestesEntrada {
 
-    
+
+       
     
     
     
