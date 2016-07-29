@@ -30,4 +30,6 @@ public interface GerenciadorEntrada {
     
     public void removerEntrada(Entrada entrada) throws EntradaNaoEncontrada;
     
+    public Entrada buscarPorId(int id) throws EntradaNaoEncontrada;
+    
 }
