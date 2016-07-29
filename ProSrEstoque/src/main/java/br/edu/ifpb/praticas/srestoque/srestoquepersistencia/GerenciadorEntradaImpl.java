@@ -94,7 +94,14 @@ public class GerenciadorEntradaImpl implements GerenciadorEntrada {
 
     @Override
     public void removerEntrada(Entrada entrada) throws EntradaNaoEncontrada {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        if(em.contains(entrada)){
+            em.remove(entrada);
+        }
+        else{
+            em.remove(buscarPorId(entrada.getId()));
+        }
+       
     }
 
     @Override
