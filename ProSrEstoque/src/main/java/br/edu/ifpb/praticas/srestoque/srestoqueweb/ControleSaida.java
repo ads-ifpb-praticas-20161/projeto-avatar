@@ -65,6 +65,11 @@ public class ControleSaida {
          //lança ProdutoNaoENcontrado se produto ainda não tiver sido salvo no banco 
         saida.setProduto( getProduto( saida.getProduto() ) );
         
+        Produto p = saida.getProduto();
+        int estoque = p.getEstoque();
+        p.setEstoque( estoque - saida.getQuantidade() );
+        gerenciadorProdutoImpl.atualizarProduto(p);
+        
         gerenciadorSaidaImpl.salvarSaida(saida);
         
         

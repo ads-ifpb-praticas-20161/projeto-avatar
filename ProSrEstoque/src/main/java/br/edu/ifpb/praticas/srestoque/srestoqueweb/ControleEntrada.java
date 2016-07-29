@@ -81,6 +81,11 @@ public class ControleEntrada implements Serializable {
         //se nao existir, vai lançar exceção P'rodutoNaoEncontrado
         entrada.setProduto(getProduto( entrada.getProduto() ) );
         
+        Produto p = entrada.getProduto();
+        int estoque = p.getEstoque();
+        p.setEstoque(estoque + entrada.getQuantidade());
+        gerenciadorProdutoImpl.atualizarProduto(p);
+        
         gerenciadorEntradaImpl.salvarEntrada(entrada);
         
         return "index.html";
