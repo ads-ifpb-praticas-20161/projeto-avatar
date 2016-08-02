@@ -29,7 +29,7 @@ public class ControleProduto implements Serializable {
     public String salvarProduto() {
         gerenciadorProdutoImpl.salvarProduto(produto);
 
-        return "index.html";
+        return "home.html";
     }
 
     public Produto getProduto() {
