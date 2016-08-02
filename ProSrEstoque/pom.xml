@@ -35,6 +35,13 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -44,9 +51,10 @@
          <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>4.12</version>
             <scope>test</scope>
-        </dependency>
+             <type>jar</type>
+         </dependency>
         
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>

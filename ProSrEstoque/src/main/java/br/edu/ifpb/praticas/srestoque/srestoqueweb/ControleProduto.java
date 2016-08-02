@@ -49,7 +49,7 @@ public class ControleProduto implements Serializable {
         gerenciadorProdutoImpl.salvarProduto(produto);
         
 
-        return "home.html";
+        return "home.xhtml";
     }
 
     public Produto getProduto() {
