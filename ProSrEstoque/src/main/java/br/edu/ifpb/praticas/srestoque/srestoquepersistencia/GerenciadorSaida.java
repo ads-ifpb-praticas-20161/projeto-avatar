@@ -28,4 +28,6 @@ public interface GerenciadorSaida {
     
     public void removerSaida(Saida saida) throws SaidaNaoEncontrada;
     
+    public Saida buscarPorId(int id) throws SaidaNaoEncontrada;
+    
 }

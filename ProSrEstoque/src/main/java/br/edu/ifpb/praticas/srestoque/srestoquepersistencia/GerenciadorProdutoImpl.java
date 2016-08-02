@@ -23,44 +23,34 @@ public class GerenciadorProdutoImpl implements GerenciadorProduto {
 
     @Override
     public void salvarProduto(Produto produto) {
-
-        if (!em.contains(produto)) {
-            em.persist(produto);
-            em.flush();
-        }
+        em.persist(produto);
     }
 
     @Override
     public void atualizarProduto(Produto produto) throws ProdutoNaoEncontrado {
-        if (em.contains(produto)) {
-            em.refresh(produto);
-            em.flush();
-        } else {
-            throw new ProdutoNaoEncontrado("Produto " + produto.getDescricao() + " id: " + produto.getId() + " nao existe");
-        }
+        em.merge(produto);
     }
 
     @Override
     public void removerProduto(Produto produto) throws ProdutoNaoEncontrado {
 
-        if (em.contains(produto)) {
+        if(em.contains(produto)){
             em.remove(produto);
-            em.flush();
-        } else {
-            throw new ProdutoNaoEncontrado("Produto " + produto.getDescricao() + " id: " + produto.getId() + " não encontrado");
         }
+        else{
+            em.remove(buscarPorId(produto.getId()));
+        }
+        
 
     }
 
     @Override
     public Produto buscarPorId(int id) throws ProdutoNaoEncontrado {
-        try {
-            Produto produto = em.getReference(Produto.class, id);
-            em.getTransaction().commit();
-            return produto;
-        } catch (EntityNotFoundException e) {
-            throw new ProdutoNaoEncontrado("Produto de id " + id + " não encontrado");
+        Produto p = em.find(Produto.class, id);
+        if(p == null){
+            throw new ProdutoNaoEncontrado("Produto de id: " + id + " nao encontrado!");
         }
+        return p;
 
     }
 
