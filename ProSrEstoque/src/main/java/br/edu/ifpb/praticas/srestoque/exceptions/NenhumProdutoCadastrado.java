@@ -6,9 +6,9 @@ package br.edu.ifpb.praticas.srestoque.exceptions;
  * @author Wellington Lins Claudino Duarte   @mail wellingtonlins2013@gmail.com
  */
 public class NenhumProdutoCadastrado extends Exception {
-    
-    public NenhumProdutoCadastrado(String msg){
+
+        public NenhumProdutoCadastrado(String msg) {
         super(msg);
     }
-    
+
 }
