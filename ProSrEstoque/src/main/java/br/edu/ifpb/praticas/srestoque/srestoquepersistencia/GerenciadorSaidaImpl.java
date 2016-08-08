@@ -38,7 +38,7 @@ public class GerenciadorSaidaImpl implements GerenciadorSaida {
     @Override
     public List<Saida> listarSaidas() throws NenhumaSaidaRealizada {
         
-         Query query = em.createQuery("SELECT s FROM Saida s");
+        Query query = em.createQuery("SELECT s FROM Saida s");
         List<Saida> saidas = query.getResultList();
         if(saidas.isEmpty())
             throw new NenhumaSaidaRealizada("Não existe nenhuma saida realizada.");
