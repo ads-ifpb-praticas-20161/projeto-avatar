@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package br.edu.ifpb.praticas.srestoque.testesunitarios;
 
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
@@ -30,6 +31,8 @@ import org.mockito.junit.MockitoRule;
  *
  * @author vmvini
  */
+
+
 public class TestesSaida {
     private ControleSaida cs;
     

@@ -15,6 +15,8 @@ import javax.inject.Named;
  * @author Wellington Lins Claudino Duarte   @mail wellingtonlins2013@gmail.com
  * @author Marcus Vinícius
  */ 
+
+
 @Named
 @RequestScoped
 public class ControleProduto implements Serializable {

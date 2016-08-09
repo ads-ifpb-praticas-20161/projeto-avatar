@@ -43,14 +43,14 @@ public class GerenciadorUsuarioImpl implements GerenciadorUsuario {
     }
 
     @Override
-    public List<Usuario> buscarPorEmail(String email) throws UsuarioNaoEncontrado {
-        Query query = em.createQuery("SELECT u FROM Usuario u WHERE p.email LIKE CONCAT('%', ?1, '%')");
+    public Usuario buscarPorEmail(String email) throws UsuarioNaoEncontrado {
+        Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.email = ?1");
         query.setParameter(1, email);
         List<Usuario> usuarios = query.getResultList();
         if (usuarios.isEmpty()) {
             throw new UsuarioNaoEncontrado("Usuario de  '" + email + "' não encontrado");
         }
-        return usuarios;
+        return usuarios.get(0);
     }
 
     @Override

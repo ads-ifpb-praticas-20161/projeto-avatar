@@ -16,10 +16,12 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
 /**
  *
  * @author vmvini
  */
+
 public class TestesProduto {
     
     private ControleProduto cp;

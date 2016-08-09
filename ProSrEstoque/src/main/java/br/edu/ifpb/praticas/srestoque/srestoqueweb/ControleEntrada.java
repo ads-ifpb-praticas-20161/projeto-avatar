@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package br.edu.ifpb.praticas.srestoque.srestoqueweb;
 import br.edu.ifpb.praticas.srestoque.exceptions.ProdutoNaoEncontrado;
 import br.edu.ifpb.praticas.srestoque.regrasnegocio.exceptions.ErroValidacaoEntrada;

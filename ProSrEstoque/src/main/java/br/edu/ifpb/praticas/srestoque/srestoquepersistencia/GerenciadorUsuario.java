@@ -18,7 +18,7 @@ public interface GerenciadorUsuario {
     public void atualizarUsuario(Usuario usuario) throws UsuarioNaoEncontrado;
     public void removerUsuario(Usuario usuario) throws UsuarioNaoEncontrado;
     public Usuario buscarPorId(int id) throws UsuarioNaoEncontrado;
-    public List<Usuario> buscarPorEmail(String email) throws UsuarioNaoEncontrado;
+    public Usuario buscarPorEmail(String email) throws UsuarioNaoEncontrado;
     public List<Usuario> listarUsuarios() throws NenhumUsuarioCadastrado;
 
 }
