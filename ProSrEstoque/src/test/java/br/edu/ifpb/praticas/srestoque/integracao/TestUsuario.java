@@ -5,7 +5,6 @@
  */
 package br.edu.ifpb.praticas.srestoque.integracao;
 
-import br.edu.ifpb.praticas.srestoque.exceptions.NaoEhFuncionario;
 import br.edu.ifpb.praticas.srestoque.exceptions.UsuarioNaoEncontrado;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Usuario;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorUsuario;
