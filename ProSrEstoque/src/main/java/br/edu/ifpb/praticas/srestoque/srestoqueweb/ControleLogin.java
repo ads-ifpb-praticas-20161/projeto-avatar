@@ -5,9 +5,7 @@
  */
 package br.edu.ifpb.praticas.srestoque.srestoqueweb;
 
-import br.edu.ifpb.praticas.srestoque.exceptions.NaoEhFuncionario;
 import br.edu.ifpb.praticas.srestoque.exceptions.UsuarioNaoEncontrado;
-import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Funcionario;
 import br.edu.ifpb.praticas.srestoque.srestoqueentidades.Usuario;
 import br.edu.ifpb.praticas.srestoque.srestoquepersistencia.GerenciadorUsuario;
 import java.io.Serializable;
@@ -16,7 +14,6 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.security.sasl.AuthenticationException;
 
 /**
  *
@@ -27,7 +24,6 @@ import javax.security.sasl.AuthenticationException;
 @SessionScoped
 public class ControleLogin implements Serializable {
 
-    private Funcionario logado;
     
     @EJB
     private GerenciadorUsuario gerenciadorUsuarioImpl;
@@ -53,13 +49,7 @@ public class ControleLogin implements Serializable {
         
     }
 
-    public Funcionario getLogado() {
-        return logado;
-    }
-
-    public void setLogado(Funcionario logado) {
-        this.logado = logado;
-    }
+   
 
     public GerenciadorUsuario getGerenciadorUsuarioImpl() {
         return gerenciadorUsuarioImpl;
