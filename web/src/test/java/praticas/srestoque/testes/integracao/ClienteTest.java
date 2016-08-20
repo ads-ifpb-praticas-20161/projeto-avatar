@@ -18,6 +18,8 @@ import org.junit.runner.RunWith;
 import praticas.srestoque.entidades.Cliente;
 import praticas.srestoque.repositorio.ClienteRepository;
 import org.jboss.arquillian.persistence.UsingDataSet;
+import static org.junit.Assert.assertThat;
+import static org.junit.internal.matchers.IsCollectionContaining.hasItem;
 
 /**
  *
@@ -47,8 +49,23 @@ public class ClienteTest {
     public void BuscarCliente() {
         Cliente cliente = clienteRepository.getById("01753059437");
         System.out.println(cliente);
-        assertEquals("vmvinisds", cliente.getNome());
+        assertEquals("vmvini", cliente.getNome());
+        
         assertEquals("Jose Dantas Nobre", cliente.getEndereco().getRua());
+        assertEquals("Jardim Oasis", cliente.getEndereco().getBairro());
+        assertEquals(371, cliente.getEndereco().getNumero());
+        assertEquals(1, cliente.getEndereco().getId());
+        assertEquals("Cajazeiras", cliente.getEndereco().getCidade());
+        assertEquals("PB", cliente.getEndereco().getEstado());
+        
+        assertEquals(2, cliente.getTelefones().size());
+        
+       assertThat(cliente.getTelefones(),
+                          hasItem("5583999469464"));
+       
+       assertThat(cliente.getTelefones(),
+                          hasItem("5583999469465"));
+        
     }
     
     

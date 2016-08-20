@@ -5,5 +5,9 @@
     
     <cliente cpf="01753059437" nome="vmvini" endereco="1" />
     
+    <telefones cliente="01753059437" telefone="5583999469464" />
+    <telefones cliente="01753059437" telefone="5583999469465" />
+    
+   
     
 </dataset>
