@@ -40,6 +40,11 @@ public class Endereco implements Serializable {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Endereco{" + "id=" + id + ", rua=" + rua + ", bairro=" + bairro + ", cep=" + cep + ", numero=" + numero + ", cidade=" + cidade + ", estado=" + estado + '}';
+    }
+
     
     
     public int getId() {

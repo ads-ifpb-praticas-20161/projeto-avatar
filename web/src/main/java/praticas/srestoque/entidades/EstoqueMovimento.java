@@ -65,6 +65,12 @@ public abstract class EstoqueMovimento {
     public void setData(Date data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "EstoqueMovimento{" + "id=" + id + ", produto=" + produto + ", quantidade=" + quantidade + ", data=" + data + '}';
+    }
+    
     
     
     

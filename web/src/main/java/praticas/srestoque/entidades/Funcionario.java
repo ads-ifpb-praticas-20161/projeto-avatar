@@ -37,6 +37,11 @@ public class Funcionario {
         this.tipo = tipo;
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", tipo=" + tipo + '}';
+    }
+
     
     
     public int getId() {
