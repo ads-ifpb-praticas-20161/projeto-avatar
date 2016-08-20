@@ -8,13 +8,14 @@ package praticas.srestoque.repositorio;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import praticas.srestoque.entidades.Funcionario;
 
 /**
  *
  * @author vmvini
  */
 @Stateless
-public class FuncionarioRepository extends Repository {
+public class FuncionarioRepository extends Repository<Funcionario, Integer> {
 
     @PersistenceContext
     private EntityManager em;

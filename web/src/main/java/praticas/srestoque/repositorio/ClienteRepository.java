@@ -17,7 +17,7 @@ import praticas.srestoque.entidades.Cliente;
  * @author vmvini
  */
 @Stateless
-public class ClienteRepository extends Repository {
+public class ClienteRepository extends Repository<Cliente, String> {
     
     @PersistenceContext
     private EntityManager em;

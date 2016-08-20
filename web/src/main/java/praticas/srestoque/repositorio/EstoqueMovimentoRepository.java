@@ -8,13 +8,14 @@ package praticas.srestoque.repositorio;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import praticas.srestoque.entidades.EstoqueMovimento;
 
 /**
  *
  * @author vmvini
  */
 @Stateless
-public class EstoqueMovimentoRepository extends Repository {
+public class EstoqueMovimentoRepository extends Repository<EstoqueMovimento, Integer> {
 
     @PersistenceContext
     private EntityManager em;

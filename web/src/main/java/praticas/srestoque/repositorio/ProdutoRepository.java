@@ -8,13 +8,14 @@ package praticas.srestoque.repositorio;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import praticas.srestoque.entidades.Produto;
 
 /**
  *
  * @author vmvini
  */
 @Stateless
-public class ProdutoRepository extends Repository {
+public class ProdutoRepository extends Repository<Produto, Integer> {
 
     @PersistenceContext
     private EntityManager em;

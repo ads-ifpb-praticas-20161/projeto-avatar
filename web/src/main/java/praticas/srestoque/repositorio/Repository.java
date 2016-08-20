@@ -15,7 +15,7 @@ import javax.persistence.Query;
  *
  * @author vmvini
  */
-public abstract class Repository<E> {
+public abstract class Repository<E, T> {
     
     protected abstract EntityManager getEM();
     
@@ -24,8 +24,22 @@ public abstract class Repository<E> {
     private Class<E> entityClass;
     
     public Repository(){
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[0];
+        //ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+        //this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[0];
+    
+        Type genericSuperClass = getClass().getGenericSuperclass();
+
+        ParameterizedType parametrizedType = null;
+        while (parametrizedType == null) {
+           if ((genericSuperClass instanceof ParameterizedType)) {
+               parametrizedType = (ParameterizedType) genericSuperClass;
+           } else {
+               genericSuperClass = ((Class<?>) genericSuperClass).getGenericSuperclass();
+           }
+        }
+
+        this.entityClass = (Class<E>) parametrizedType.getActualTypeArguments()[0];
+
     }
     
     public E salvar(E e){
@@ -33,7 +47,7 @@ public abstract class Repository<E> {
         return salvo;
     }
     
-    public E getById(int id){
+    public E getById(T id){
          E encontrado = getEM().find(entityClass, id);
          return encontrado;
     }
