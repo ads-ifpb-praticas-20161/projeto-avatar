@@ -8,6 +8,8 @@ package praticas.srestoque.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,6 +29,11 @@ public class Cliente implements Serializable {
     private String nome;
     
     @ElementCollection()
+    @CollectionTable(
+            name="Telefones",
+            joinColumns = @JoinColumn(name = "cliente")
+    )
+    @Column(name="telefone")
     private List<String> telefones;  
     
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
