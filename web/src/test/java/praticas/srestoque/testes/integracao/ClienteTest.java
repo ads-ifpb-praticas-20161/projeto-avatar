@@ -5,9 +5,13 @@
  */
 package praticas.srestoque.testes.integracao;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.DataSource;
+import org.jboss.arquillian.persistence.PersistenceTest;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -20,6 +24,7 @@ import praticas.srestoque.repositorio.ClienteRepository;
 import org.jboss.arquillian.persistence.UsingDataSet;
 import static org.junit.Assert.assertThat;
 import static org.junit.internal.matchers.IsCollectionContaining.hasItem;
+import praticas.srestoque.entidades.Endereco;
 
 /**
  *
@@ -44,6 +49,89 @@ public class ClienteTest {
                 .addAsResource("META-INF/persistence.xml");
     }
     
+    @Test 
+    public void inserirOutroCliente(){
+        List<String> telefones = new ArrayList<>();
+        telefones.add("1234567");
+        telefones.add("6543217");
+        
+        Endereco e = new Endereco("rua1", "bairro1", "cep1", 212, "caicó", "RN");
+        
+        Cliente cliente = new Cliente("01753059433", "VMVINI", telefones, e);
+        
+        clienteRepository.salvar(cliente);
+        
+        
+        //verificar se cliente foi persistido
+        Cliente encontrado = clienteRepository.getById("01753059433");
+        assertEquals("VMVINI", cliente.getNome());
+        
+        assertEquals("rua1", encontrado.getEndereco().getRua());
+        assertEquals("bairro1", encontrado.getEndereco().getBairro());
+        assertEquals("cep1", encontrado.getEndereco().getCep() );
+        assertEquals(212, encontrado.getEndereco().getNumero());
+        //assertEquals(1, encontrado.getEndereco().getId());
+        assertEquals("caicó", encontrado.getEndereco().getCidade());
+        assertEquals("RN", encontrado.getEndereco().getEstado());
+        
+        assertEquals(2, encontrado.getTelefones().size());
+        
+       assertThat(encontrado.getTelefones(),
+                          hasItem("1234567"));
+       
+       assertThat(encontrado.getTelefones(),
+                          hasItem("6543217"));
+       
+       
+        clienteRepository.salvar(new Cliente("0125329433", "joao"));
+        
+        Cliente encontrado2 = clienteRepository.getById("0125329433");
+        assertEquals("joao", encontrado2.getNome());
+        
+        encontrado = clienteRepository.getById("01753059433");
+        assertEquals("VMVINI", encontrado.getNome());
+       
+       
+    }
+    
+    
+    @Test
+    public void inserirCliente(){
+        //instanciar novo cliente
+        List<String> telefones = new ArrayList<>();
+        telefones.add("123456");
+        telefones.add("654321");
+        
+        Endereco e = new Endereco("rua1", "bairro1", "cep1", 212, "caicó", "RN");
+        
+        Cliente cliente = new Cliente("01753059422", "Pedro Arthur", telefones, e);
+        
+        clienteRepository.salvar(cliente);
+        
+        
+        //verificar se cliente foi persistido
+        Cliente encontrado = clienteRepository.getById("01753059422");
+        assertEquals("Pedro Arthur", cliente.getNome());
+        
+        assertEquals("rua1", encontrado.getEndereco().getRua());
+        assertEquals("bairro1", encontrado.getEndereco().getBairro());
+        assertEquals("cep1", encontrado.getEndereco().getCep() );
+        assertEquals(212, encontrado.getEndereco().getNumero());
+        //assertEquals(1, encontrado.getEndereco().getId());
+        assertEquals("caicó", encontrado.getEndereco().getCidade());
+        assertEquals("RN", encontrado.getEndereco().getEstado());
+        
+        assertEquals(2, encontrado.getTelefones().size());
+        
+       assertThat(encontrado.getTelefones(),
+                          hasItem("123456"));
+       
+       assertThat(encontrado.getTelefones(),
+                          hasItem("654321"));
+        
+    }
+    
+    /*
     @Test()
     @UsingDataSet("datasets/clientes.xml")
     public void BuscarCliente() {
@@ -66,7 +154,7 @@ public class ClienteTest {
        assertThat(cliente.getTelefones(),
                           hasItem("5583999469465"));
         
-    }
+    }*/
     
     
 }
