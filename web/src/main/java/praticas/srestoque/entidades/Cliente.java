@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -21,7 +22,7 @@ import javax.persistence.OneToOne;
 public class Cliente implements Serializable {
     
     @Id
-    private int cpf;
+    private String cpf;
     
     private String nome;
     
@@ -29,18 +30,19 @@ public class Cliente implements Serializable {
     private List<String> telefones;  
     
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="endereco")
     private Endereco endereco;
 
     public Cliente(){}
     
-    public Cliente(int cpf, String nome) {
+    public Cliente(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
     }
 
     
     
-    public Cliente(int cpf, String nome, Endereco endereco) {
+    public Cliente(String cpf, String nome, Endereco endereco) {
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
@@ -48,7 +50,7 @@ public class Cliente implements Serializable {
 
     
     
-    public Cliente(int cpf, String nome, List<String> telefones, Endereco endereco) {
+    public Cliente(String cpf, String nome, List<String> telefones, Endereco endereco) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefones = telefones;
@@ -64,11 +66,11 @@ public class Cliente implements Serializable {
     
     
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
