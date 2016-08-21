@@ -5,7 +5,13 @@
              version="2.0">
     <persistence-unit name="srestoque" transaction-type="JTA">
         <jta-data-source>srestoqueDB</jta-data-source>
-        
+        <class>praticas.srestoque.entidades.Cliente</class>
+        <class>praticas.srestoque.entidades.Endereco</class>
+        <class>praticas.srestoque.entidades.Entrada</class>
+        <class>praticas.srestoque.entidades.Funcionario</class>
+        <class>praticas.srestoque.entidades.Produto</class>
+        <class>praticas.srestoque.entidades.Saida</class>
+        <class>praticas.srestoque.entidades.EstoqueMovimento</class>
         <properties>
             <property name="eclipselink.target-database" value="DERBY"/>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
