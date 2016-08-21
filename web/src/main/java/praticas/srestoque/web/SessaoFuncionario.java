@@ -34,12 +34,14 @@ public class SessaoFuncionario implements Serializable {
     public void logar() throws IOException{
         try{
             loginSB.logar(email, senha);
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ec.getFlash().put("home", "Something was done successfully");
+            ec.redirect("index.xhtml#home");
         }
         catch(AuthenticationException e){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage(), e.getMessage()));
             
         }
-        
         
     }
     
