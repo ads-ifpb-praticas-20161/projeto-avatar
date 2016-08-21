@@ -15,7 +15,7 @@ import praticas.srestoque.entidades.Funcionario;
  * @author vmvini
  */
 @Stateless
-public class FuncionarioRepository extends Repository<Funcionario, Integer> {
+public class FuncionarioRepository extends Repository<Funcionario, String> {
 
     @PersistenceContext
     private EntityManager em;
