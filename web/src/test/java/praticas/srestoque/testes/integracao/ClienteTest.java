@@ -32,22 +32,10 @@ import praticas.srestoque.entidades.Endereco;
  */
 
 @RunWith(Arquillian.class)
-public class ClienteTest {
+public class ClienteTest  extends TesteIntegracao {
     
     @Inject 
     private ClienteRepository clienteRepository;
-    
-    @Deployment
-    public static JavaArchive createTestArchive() {
-        return ShrinkWrap.create(JavaArchive.class, "test.jar" )
-                .addPackage(ClienteRepository.class.getPackage())
-                .addPackage(Cliente.class.getPackage())
-                //.addClass(ControleLogin.class)
-                //.addClass(GerenciadorUsuario.class)
-                //.addClass(GerenciadorUsuarioImpl.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"))
-                .addAsResource("META-INF/persistence.xml");
-    }
     
     @Test 
     public void inserirOutroCliente(){
