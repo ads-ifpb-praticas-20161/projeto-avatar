@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <head>
         <title>SrEstoque</title>
@@ -34,11 +35,11 @@
             <nav id="nav">
                 <ul>
                     <li>
-                        <h:link rendered="#{sessaoFuncionario.estaLogado()}" value="Cadastrar Funcionário" />
+                        <h:outputLink rendered="#{sessaoFuncionario.estaLogado()}" value="index.xhtml#cadastro_funcionario">Cadastrar Funcionário</h:outputLink>
                     </li>
-                    <!--li><a href="index.html">Home</a></li-->
-                    <!--li><a href="#" class="button special">Sign Up</a></li-->
                     <li><h:link fragment="login" rendered="#{!sessaoFuncionario.estaLogado()}" class="button special">Entrar</h:link></li>
+
+                    <li> <h:form> <h:commandLink rendered="#{sessaoFuncionario.estaLogado()}" value="Sair" action="#{sessaoFuncionario.logoff()}" /> </h:form> </li>
                 </ul>
             </nav>
         </header>
@@ -172,7 +173,7 @@
 
                             </div>
                             <div class="12u$">
-                                <h:messages styleClass="btn btn-danger"  layout="table" />
+                                <h:messages globalOnly="true" styleClass="btn btn-danger"  layout="table" />
                             </div>
 
                         </div>
@@ -182,10 +183,62 @@
         </ui:fragment>
 
 
+        <!-- CADASTRO DE FUNCIONARIO -->
+        <span id="cadastro_funcionario"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style2 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Funcionários</h2>
+                        <p>Cadastre aqui um novo funcionário</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="funcionarioForm" method="post" action="#">
+
+                            <div class="row uniform 50%">
+
+                                <div class="6u 12u$(4)">
+                                    <input type="email" jsf:id="emailFunc" jsf:value="#{funcionarioMB.novoFuncionario.email}" placeholder="funcionario@email.com" />
+                                </div>
+
+                                <div class="6u$ 12u$(4)">
+                                    <input type="password" placeholder="senha" jsf:id="senhaFunc" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+
+                                    <div class="select-wrapper">
+                                        <h:selectOneMenu style="padding:10px;" id="tipoFuncionario"  value="#{funcionarioMB.novoFuncionario.tipo}">
+                                           <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="12u$">
+                                    <button id="cadastroFuncionarioButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" styleClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+
+
         <!-- Footer -->
         <footer id="footer">
             <div class="container">
-                
+
                 <div class="row">
                     <div class="8u 12u$(medium)">
                         <ul class="copyright">
