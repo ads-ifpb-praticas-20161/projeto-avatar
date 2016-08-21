@@ -43,8 +43,7 @@ public abstract class Repository<E, T> {
     }
     
     public E salvar(E e){
-        getEM().persist(e);
-        return e;
+        return getEM().merge(e);
     }
     
     public E getById(T id){
