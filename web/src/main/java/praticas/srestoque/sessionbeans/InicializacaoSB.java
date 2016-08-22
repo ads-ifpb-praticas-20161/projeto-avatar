@@ -12,6 +12,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import praticas.srestoque.entidades.Funcionario;
 import praticas.srestoque.entidades.TipoFuncionario;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 import praticas.srestoque.repositorio.FuncionarioRepository;
 
 /**
@@ -34,8 +35,14 @@ public class InicializacaoSB {
     private void cadastrarAdminPadrao(){
         List<Funcionario> fs = fr.listar();
         if(fs.isEmpty()){
-            Funcionario f = new Funcionario("srestoque@admin.com", "admin", TipoFuncionario.ADMINISTRADOR);
-            fr.salvar(f);
+            try{
+                Funcionario f = new Funcionario("srestoque@admin.com", "admin", TipoFuncionario.ADMINISTRADOR);
+                fr.salvar(f);
+            }catch(ChavePrimariaException e){
+                //essa exceção nunca será lançada.
+                //pois a estratégia de construção do banco é drop-and-create
+                //e o funcionário só é criado se o banco ainda não possuir administrador
+            }
         }
     }
     

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import praticas.srestoque.entidades.Funcionario;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 import praticas.srestoque.excecoes.ValidacaoFormularioException;
 import praticas.srestoque.repositorio.FuncionarioRepository;
 
@@ -23,7 +24,7 @@ public class FuncionarioStateless {
     @EJB
     private FuncionarioRepository fr;
 
-    public void cadastrar(Funcionario funcionario) throws ValidacaoFormularioException{
+    public void cadastrar(Funcionario funcionario) throws ValidacaoFormularioException, ChavePrimariaException{
         
         validar(funcionario);
         fr.salvar(funcionario);

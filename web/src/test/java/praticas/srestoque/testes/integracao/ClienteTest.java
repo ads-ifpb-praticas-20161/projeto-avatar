@@ -25,6 +25,7 @@ import org.jboss.arquillian.persistence.UsingDataSet;
 import static org.junit.Assert.assertThat;
 import static org.junit.internal.matchers.IsCollectionContaining.hasItem;
 import praticas.srestoque.entidades.Endereco;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ClienteTest  extends TesteIntegracao {
     private ClienteRepository clienteRepository;
     
     @Test 
-    public void inserirOutroCliente(){
+    public void inserirOutroCliente() throws ChavePrimariaException{
         List<String> telefones = new ArrayList<>();
         telefones.add("1234567");
         telefones.add("6543217");
@@ -84,7 +85,7 @@ public class ClienteTest  extends TesteIntegracao {
     
     
     @Test
-    public void inserirCliente(){
+    public void inserirCliente() throws ChavePrimariaException{
         //instanciar novo cliente
         List<String> telefones = new ArrayList<>();
         telefones.add("123456");

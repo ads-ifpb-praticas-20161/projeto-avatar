@@ -24,6 +24,10 @@ public class FuncionarioRepository extends Repository<Funcionario, String> {
     protected EntityManager getEM() {
         return em;
     }
+    
+    protected  String getPrimaryKeyConstraintViolationMsg(){
+        return "Já existe funcionário com esse email!";
+    }
 
     @Override
     protected String getListAllQuery() {

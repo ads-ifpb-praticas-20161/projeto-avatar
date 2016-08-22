@@ -20,6 +20,8 @@ import org.junit.runner.RunWith;
 import praticas.srestoque.entidades.Cliente;
 import praticas.srestoque.entidades.Funcionario;
 import praticas.srestoque.entidades.TipoFuncionario;
+import praticas.srestoque.excecoes.ChavePrimariaException;
+import praticas.srestoque.excecoes.ValidacaoFormularioException;
 import praticas.srestoque.repositorio.ClienteRepository;
 import praticas.srestoque.sessionbeans.FuncionarioStateless;
 import praticas.srestoque.sessionbeans.LoginStateful;
@@ -38,7 +40,7 @@ public class FuncionarioTest extends TesteIntegracao {
     private LoginStateful loginSB;
     
     @Test(expected = AuthenticationException.class)
-    public void cadastrarELogarComSenhaErrada() throws AuthenticationException{
+    public void cadastrarELogarComSenhaErrada() throws ChavePrimariaException, AuthenticationException, ValidacaoFormularioException{
         
         Funcionario f = new Funcionario("vmvini@hotmail.com", "123", TipoFuncionario.ADMINISTRADOR);
         
@@ -49,7 +51,7 @@ public class FuncionarioTest extends TesteIntegracao {
     }
     
     @Test
-    public void estaLogado() throws AuthenticationException{
+    public void estaLogado() throws AuthenticationException, ValidacaoFormularioException, ChavePrimariaException{
         Funcionario f = new Funcionario("vmvini@hotmail.com", "123", TipoFuncionario.ADMINISTRADOR);
         funcionarioSB.cadastrar(f);
         loginSB.logar("vmvini@hotmail.com", "123");

@@ -10,8 +10,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.print.attribute.standard.Severity;
 import praticas.srestoque.entidades.Funcionario;
 import praticas.srestoque.entidades.TipoFuncionario;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 import praticas.srestoque.excecoes.ValidacaoFormularioException;
 import praticas.srestoque.sessionbeans.FuncionarioStateless;
 
@@ -42,9 +44,12 @@ public class FuncionarioMB {
     public void cadastrar(){
         try{
             fs.cadastrar(novoFuncionario);
+            String result = "Sucesso ao cadastrar funcionário";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, result, result));
         }
-        catch(ValidacaoFormularioException e){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage(), e.getMessage()));
+        catch(ValidacaoFormularioException | ChavePrimariaException e){
+            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
             
         }
         finally{

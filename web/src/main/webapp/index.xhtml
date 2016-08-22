@@ -19,6 +19,8 @@
         <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js" ></script>
+        
+        <link rel="stylesheet" href="css/my_style.css" />
 
         <noscript>
             <link rel="stylesheet" href="css/skel.css" />
@@ -173,7 +175,7 @@
 
                             </div>
                             <div class="12u$">
-                                <h:messages globalOnly="true" styleClass="btn btn-danger"  layout="table" />
+                                <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
                             </div>
 
                         </div>
@@ -194,7 +196,7 @@
                     </header>
                     <section>
 
-                        <form jsf:id="funcionarioForm" method="post" action="#">
+                        <form jsf:id="funcionarioForm" method="post" action="index.xhtml#cadastro_funcionario">
 
                             <div class="row uniform 50%">
 
@@ -222,7 +224,7 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" styleClass="btn btn-danger"  layout="table" />
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
                                 </div>
 
                             </div>

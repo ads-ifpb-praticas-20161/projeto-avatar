@@ -24,6 +24,10 @@ public class EstoqueMovimentoRepository extends Repository<EstoqueMovimento, Int
     protected EntityManager getEM() {
         return em;
     }
+    
+    protected  String getPrimaryKeyConstraintViolationMsg(){
+        return "Já existe movimento de estoque com esse id!";
+    }
 
     @Override
     protected String getListAllQuery() {

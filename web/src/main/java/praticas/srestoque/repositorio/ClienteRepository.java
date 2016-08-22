@@ -27,6 +27,11 @@ public class ClienteRepository extends Repository<Cliente, String> {
         return em;
     }
 
+    protected  String getPrimaryKeyConstraintViolationMsg(){
+        return "Já existe cliente com esse cpf!";
+    }
+    
+    
     @Override
     protected String getListAllQuery() {
         return "SELECT * FROM Cliente";

@@ -25,6 +25,11 @@ public class ProdutoRepository extends Repository<Produto, Integer> {
         return em;
     }
 
+    protected  String getPrimaryKeyConstraintViolationMsg(){
+        return "Já existe produto com este id";
+    }
+    
+    
     @Override
     protected String getListAllQuery() {
         return "SELECT * From Produto";

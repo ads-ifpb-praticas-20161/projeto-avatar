@@ -8,8 +8,11 @@ package praticas.srestoque.repositorio;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 
 /**
  *
@@ -20,6 +23,8 @@ public abstract class Repository<E, T> {
     protected abstract EntityManager getEM();
     
     protected abstract String getListAllQuery();
+    
+    protected abstract String getPrimaryKeyConstraintViolationMsg();
     
     private Class<E> entityClass;
     
@@ -42,9 +47,21 @@ public abstract class Repository<E, T> {
 
     }
     
-    public E salvar(E e){
+    public E salvar(E e) throws ChavePrimariaException{
+        try{
+            getEM().persist(e);
+            getEM().flush();
+            return e;
+        }
+        catch(PersistenceException ex){
+            throw new ChavePrimariaException(getPrimaryKeyConstraintViolationMsg());
+        }
+    }
+    
+    public E atualizar(E e){
         return getEM().merge(e);
     }
+    
     
     public E getById(T id){
          E encontrado = getEM().find(entityClass, id);
@@ -52,9 +69,17 @@ public abstract class Repository<E, T> {
     }
     
     public List<E> listar(){
-        Query query = getEM().createNativeQuery(getListAllQuery(), entityClass);
-        List<E> list = query.getResultList();
-        return list;
+        try{
+            Query query = getEM().createNativeQuery(getListAllQuery(), entityClass);
+            List<E> list = query.getResultList();
+            return list;
+        }
+        catch(Exception e){
+            System.out.println("OCORREU ERRO!!!");
+            System.out.println(e.getMessage());
+        }
+        return null;
+        
     }
     
     public void remover(E e){
