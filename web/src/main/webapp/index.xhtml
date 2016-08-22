@@ -82,92 +82,62 @@
                     </header>
                     <div class="row 150%">
                         <div class="4u 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color1 fa-desktop"></i>
-                                <h3>Cadastro de produtos</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#cadastro_produto">
+                                <section class="box">
+                                    <i class="icon big rounded color1 fa-desktop"></i>
+                                    <h3>Cadastro de produtos</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
                         <div class="4u 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color3 fa-arrow-circle-down"></i>
-                                <h3>Realizar Entrada</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#cadastro_entrada">
+                                <section class="box">
+                                    <i class="icon big rounded color3 fa-arrow-circle-down"></i>
+                                    <h3>Realizar Entrada</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
                         <div class="4u$ 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color4 fa-rocket"></i>
-                                <h3>Realizar Saída</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#cadastro_saida">
+                                <section class="box">
+                                    <i class="icon big rounded color4 fa-rocket"></i>
+                                    <h3>Realizar Saída</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
                     </div>
                     <div class="row 150%">
 
                         <div class="4u 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color5 fa-user"></i>
-                                <h3>Cadastrar Cliente</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#cadastro_cliente">
+                                <section class="box">
+                                    <i class="icon big rounded color5 fa-user"></i>
+                                    <h3>Cadastrar Cliente</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
                         <div class="4u 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color6 fa-money"></i>
-                                <h3>Realizar venda</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#cadastro_venda">
+                                <section class="box">
+                                    <i class="icon big rounded color6 fa-money"></i>
+                                    <h3>Realizar venda</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
 
                         <div class="4u$ 12u$(medium)">
-                            <section class="box">
-                                <i class="icon big rounded color7 fa-file-pdf-o"></i>
-                                <h3>Gerar relatorios</h3>
-                            </section>
+                            <h:outputLink value="index.xhtml#busca">
+                                <section class="box">
+                                    <i class="icon big rounded color7 fa-search"></i>
+                                    <h3>Buscar</h3>
+                                </section>
+                            </h:outputLink>
                         </div>
                     </div>
                 </div>
             </section>
         </ui:fragment>
 
-        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
-            <section id="two" class="wrapper style2 special">
-                <div class="container">
-                    <header class="major">
-                        <h2>Lorem ipsum dolor sit</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, autem.</p>
-                    </header>
-                    <section class="profiles">
-                        <div class="row">
-                            <section class="3u 6u(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <h4>Lorem ipsum</h4>
-                                <p>Lorem ipsum dolor</p>
-                            </section>
-                            <section class="3u 6u$(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <h4>Voluptatem dolores</h4>
-                                <p>Ullam nihil repudi</p>
-                            </section>
-                            <section class="3u 6u(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <h4>Doloremque quo</h4>
-                                <p>Harum corrupti quia</p>
-                            </section>
-                            <section class="3u$ 6u$(medium) 12u$(xsmall) profile">
-                                <img src="images/profile_placeholder.gif" alt="" />
-                                <h4>Voluptatem dicta</h4>
-                                <p>Et natus sapiente</p>
-                            </section>
-                        </div>
-                    </section>
-                    <footer>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam dolore illum, temporibus veritatis eligendi, aliquam, dolor enim itaque veniam aut eaque sequi qui quia vitae pariatur repudiandae ab dignissimos ex!</p>
-                        <ul class="actions">
-                            <li>
-                                <a href="#" class="button big">Lorem ipsum dolor sit</a>
-                            </li>
-                        </ul>
-                    </footer>
-                </div>
-            </section>
-        </ui:fragment>
 
 
         <!-- LOGIN -->
@@ -239,6 +209,303 @@
 
                                 <div class="12u$">
                                     <button id="cadastroFuncionarioButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+
+
+        <!-- CADASTRO DE PRODUTO -->
+        <span id="cadastro_produto"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style1 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Produto</h2>
+                        <p>Cadastre aqui um novo produto</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="produtoForm" method="post" action="index.xhtml#cadastro_produto">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+        
+        <!-- CADASTRO DE CLIENTE -->
+        <span id="cadastro_cliente"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style3 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Cliente</h2>
+                        <p>Cadastre aqui um cliente</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="clienteForm" method="post" action="index.xhtml#cadastro_cliente">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeCliente" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+        
+        <!-- CADASTRO DE ENTRADA -->
+        <span id="cadastro_entrada"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style2 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Entradas</h2>
+                        <p>Cadastre a entrada de itens de um produto</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="entradaForm" method="post" action="index.xhtml#cadastro_produto">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+        
+        
+        <!-- CADASTRO DE VENDA -->
+        <span id="cadastro_venda"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style1 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Vendas</h2>
+                        <p>Realize aqui uma venda</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="vendaForm" method="post" action="index.xhtml#cadastro_produto">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+        
+        <!-- CADASTRO DE SAIDA -->
+        <span id="cadastro_saida"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style3 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Saidas</h2>
+                        <p>Cadastre aqui a saída de itens de um produto</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="saidaForm" method="post" action="index.xhtml#cadastro_produto">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </section>
+
+                </div>
+            </section>
+        </ui:fragment>
+        
+        
+        <!-- BUSCA -->
+        <span id="busca"></span>
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+            <section  class="wrapper style2 special">
+                <div class="container">
+                    <header class="major">
+                        <h2>Busca</h2>
+                        <p>Realize uma busca por produtos, entradas, saidas, vendas e clientes</p>
+                    </header>
+                    <section>
+
+                        <form jsf:id="buscaForm" method="post" action="index.xhtml#cadastro_produto">
+
+                            <div class="row uniform 50%">
+
+                                <div class="12u$">
+                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+                                <div class="12u$">
+                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
 
                                 </div>
 
