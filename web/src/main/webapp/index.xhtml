@@ -19,7 +19,7 @@
         <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <script src="bootstrap/js/bootstrap.min.js" ></script>
-        
+
         <link rel="stylesheet" href="css/my_style.css" />
 
         <noscript>
@@ -77,29 +77,48 @@
             <section id="one" class="wrapper style1 special">
                 <div class="container">
                     <header class="major">
-                        <h2>Consectetur adipisicing elit</h2>
-                        <p>Lorem ipsum dolor sit amet, delectus consequatur, similique quia!</p>
+                        <h2>Gerenciamento de estoque e clientes</h2>
+                        <p>Escolha uma das opções</p>
                     </header>
                     <div class="row 150%">
                         <div class="4u 12u$(medium)">
                             <section class="box">
-                                <i class="icon big rounded color1 fa-cloud"></i>
-                                <h3>Lorem ipsum dolor</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
+                                <i class="icon big rounded color1 fa-desktop"></i>
+                                <h3>Cadastro de produtos</h3>
                             </section>
                         </div>
                         <div class="4u 12u$(medium)">
                             <section class="box">
-                                <i class="icon big rounded color9 fa-desktop"></i>
-                                <h3>Consectetur adipisicing</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
+                                <i class="icon big rounded color3 fa-arrow-circle-down"></i>
+                                <h3>Realizar Entrada</h3>
                             </section>
                         </div>
                         <div class="4u$ 12u$(medium)">
                             <section class="box">
-                                <i class="icon big rounded color6 fa-rocket"></i>
-                                <h3>Adipisicing elit totam</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
+                                <i class="icon big rounded color4 fa-rocket"></i>
+                                <h3>Realizar Saída</h3>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row 150%">
+
+                        <div class="4u 12u$(medium)">
+                            <section class="box">
+                                <i class="icon big rounded color5 fa-user"></i>
+                                <h3>Cadastrar Cliente</h3>
+                            </section>
+                        </div>
+                        <div class="4u 12u$(medium)">
+                            <section class="box">
+                                <i class="icon big rounded color6 fa-money"></i>
+                                <h3>Realizar venda</h3>
+                            </section>
+                        </div>
+
+                        <div class="4u$ 12u$(medium)">
+                            <section class="box">
+                                <i class="icon big rounded color7 fa-file-pdf-o"></i>
+                                <h3>Gerar relatorios</h3>
                             </section>
                         </div>
                     </div>
@@ -212,7 +231,7 @@
 
                                     <div class="select-wrapper">
                                         <h:selectOneMenu style="padding:10px;" id="tipoFuncionario"  value="#{funcionarioMB.novoFuncionario.tipo}">
-                                           <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
                                             <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
                                         </h:selectOneMenu>
                                     </div>
