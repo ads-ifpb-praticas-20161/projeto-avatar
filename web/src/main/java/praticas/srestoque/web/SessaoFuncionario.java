@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.naming.AuthenticationException;
 import praticas.srestoque.entidades.Funcionario;
+import praticas.srestoque.entidades.TipoFuncionario;
 import praticas.srestoque.sessionbeans.LoginStateful;
 
 /**
@@ -43,6 +44,10 @@ public class SessaoFuncionario implements Serializable {
             
         }
         
+    }
+    
+    public boolean isAdministrador(){
+        return getLogado().getTipo().equals(TipoFuncionario.ADMINISTRADOR);
     }
     
     public Funcionario getLogado(){

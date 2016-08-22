@@ -37,7 +37,7 @@
             <nav id="nav">
                 <ul>
                     <li>
-                        <h:outputLink rendered="#{sessaoFuncionario.estaLogado()}" value="index.xhtml#cadastro_funcionario">Cadastrar Funcionário</h:outputLink>
+                        <h:outputLink rendered="#{sessaoFuncionario.estaLogado() and sessaoFuncionario.isAdministrador()}" value="index.xhtml#cadastro_funcionario">Cadastrar Funcionário</h:outputLink>
                     </li>
                     <li><h:link fragment="login" rendered="#{!sessaoFuncionario.estaLogado()}" class="button special">Entrar</h:link></li>
 
@@ -187,7 +187,7 @@
 
         <!-- CADASTRO DE FUNCIONARIO -->
         <span id="cadastro_funcionario"></span>
-        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
+        <ui:fragment  rendered="#{sessaoFuncionario.estaLogado() and sessaoFuncionario.isAdministrador()}">
             <section  class="wrapper style2 special">
                 <div class="container">
                     <header class="major">
