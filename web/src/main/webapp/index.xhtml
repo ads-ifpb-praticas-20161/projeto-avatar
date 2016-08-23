@@ -364,7 +364,7 @@
                     </header>
                     <section>
 
-                        <form jsf:id="entradaForm" method="post" action="index.xhtml#cadastro_produto">
+                        <form jsf:id="entradaForm" method="post" action="index.xhtml#cadastro_entrada">
 
                             <div class="row uniform 50%">
 
@@ -415,7 +415,7 @@
                     </header>
                     <section>
 
-                        <form jsf:id="vendaForm" method="post" action="index.xhtml#cadastro_produto">
+                        <form jsf:id="vendaForm" method="post" action="index.xhtml#cadastro_venda">
 
                             <div class="row uniform 50%">
 
@@ -465,7 +465,7 @@
                     </header>
                     <section>
 
-                        <form jsf:id="saidaForm" method="post" action="index.xhtml#cadastro_produto">
+                        <form jsf:id="saidaForm" method="post" action="index.xhtml#cadastro_saida">
 
                             <div class="row uniform 50%">
 
@@ -517,30 +517,59 @@
                     </header>
                     <section>
 
-                        <form jsf:id="buscaForm" method="post" action="index.xhtml#cadastro_produto">
+                        <form jsf:id="buscaForm" method="post" action="index.xhtml#busca">
 
                             <div class="row uniform 50%">
 
-                                <div class="12u$">
-                                    <input type="text" jsf:id="nomeProd" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                <div style="text-align:left;" class="12u$">
+
+                                    <h4 style="margin:10px;">Pesquisar</h4>
+                                    <div class="select-wrapper">
+                                        <h:selectOneMenu style="padding:10px;" id="buscaOpcao"  value="#{funcionarioMB.novoFuncionario.tipo}">
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
+                                    <h4 style="margin:10px;" >Tipo de busca</h4>
+                                    <div class="select-wrapper">
+                                        <h:selectOneMenu style="padding:10px;" id="tipoBusca"  value="#{funcionarioMB.novoFuncionario.tipo}">
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
+                                            <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
+                                        </h:selectOneMenu>
+                                    </div>
+
                                 </div>
 
+
+                                <h4 style="margin:10px;" >Termo de pesquisa</h4>
                                 <div class="12u$">
-                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                    <input type="text" placeholder="Pesquisa" jsf:id="termoPesquisa" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
                                 </div>
 
-                                <div class="12u$">
-                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
-                                </div>
-                                <div class="12u$">
-                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                <h4 style="margin:10px;" >Resultados</h4>
+
+                                <div style="width:100%;" class="table-wrapper">
+                                    <section>
+                                        <h:dataTable  value="#{pesquisaMB.clientes}" var="cliente">
+
+                                            <h:column>
+                                                #{cliente.cpf}
+                                            </h:column>
+
+                                            <h:column>
+                                                #{cliente.nome}
+                                            </h:column>
+
+
+                                        </h:dataTable>
+                                    </section>
                                 </div>
 
 
-                                <div class="12u$">
-                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
 
-                                </div>
+
+
 
                                 <div class="12u$">
                                     <h:message for="buscaForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
