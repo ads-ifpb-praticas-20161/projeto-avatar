@@ -53,7 +53,7 @@ public class FuncionarioMB {
             
         }
         finally{
-            novoFuncionario = null;
+            novoFuncionario = new Funcionario();
         }
        
     }

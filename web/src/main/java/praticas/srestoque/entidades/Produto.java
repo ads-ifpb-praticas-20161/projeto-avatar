@@ -23,10 +23,10 @@ public class Produto {
     
     private String nome;
     private String descricao;
-    private int estoque;
-    private float valor;
+    private Integer estoque;
+    private Float valor;
 
-    public Produto(String nome, String descricao, int estoque, float valor) {
+    public Produto(String nome, String descricao, Integer estoque, Float valor) {
         this.nome = nome;
         this.descricao = descricao;
         this.estoque = estoque;
@@ -67,19 +67,19 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public int getEstoque() {
+    public Integer getEstoque() {
         return estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(Integer estoque) {
         this.estoque = estoque;
     }
 
-    public float getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
     

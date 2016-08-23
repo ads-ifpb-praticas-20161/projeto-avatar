@@ -50,9 +50,9 @@ public class ClientesMB {
     }
     
     private void resetModel(){
-        tel1 = null;
-        tel2 = null;
-        cliente = null;
+        tel1 = new String();
+        tel2 = new String();
+        cliente = new Cliente();
     }
     
     public void cadastrarCliente(){
