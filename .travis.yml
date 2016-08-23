@@ -1,6 +1,8 @@
 language: java
 jdk:
   - oraclejdk8
-branches: bTravis
+branches: 
+  only:
+    bTravis
 install: mvn install -U -DskipTests=true
 script: mvn test -Pglassfish
