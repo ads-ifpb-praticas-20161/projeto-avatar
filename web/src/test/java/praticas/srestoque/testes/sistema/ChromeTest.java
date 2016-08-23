@@ -6,12 +6,16 @@
 package praticas.srestoque.testes.sistema;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
@@ -44,9 +48,40 @@ public class ChromeTest {
     }
 
     @Test
-    public void test() {
+    public void testLoginAdminPadrao() {
         assertEquals("O titulo deve ser SrEstoque", "SrEstoque", driver.getTitle());
+        WebElement email = driver.findElement(By.id("loginForm:email"));
+        WebElement pass = driver.findElement(By.id("loginForm:senha"));
+        WebElement button = driver.findElement(By.id("loginButton"));
         
+        
+        email.sendKeys("srestoque@admin.com");
+        pass.sendKeys("admin");
+        button.click();
+        
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        
+        //cadastro_funcionario
+        WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
+    
+    }
+    
+    @Test(expected = NoSuchElementException.class)
+    public void testLoginErrado(){
+         assertEquals("O titulo deve ser SrEstoque", "SrEstoque", driver.getTitle());
+        WebElement email = driver.findElement(By.id("loginForm:email"));
+        WebElement pass = driver.findElement(By.id("loginForm:senha"));
+        WebElement button = driver.findElement(By.id("loginButton"));
+        
+        
+        email.sendKeys("srestoque@admin.com");
+        pass.sendKeys("43423432");
+        button.click();
+        
+        //driver.manage().timeouts().implicitlyWait(, TimeUnit.SECONDS);
+        
+        //cadastro_funcionario
+        WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
     }
 
 }
