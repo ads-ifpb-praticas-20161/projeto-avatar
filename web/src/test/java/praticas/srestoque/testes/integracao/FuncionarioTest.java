@@ -52,6 +52,9 @@ public class FuncionarioTest extends TesteIntegracao {
     
     @Test
     public void estaLogado() throws AuthenticationException, ValidacaoFormularioException, ChavePrimariaException{
+        
+        funcionarioSB.remover(new Funcionario("vmvini@hotmail.com", "123", TipoFuncionario.ADMINISTRADOR));
+        
         Funcionario f = new Funcionario("vmvini@hotmail.com", "123", TipoFuncionario.ADMINISTRADOR);
         funcionarioSB.cadastrar(f);
         loginSB.logar("vmvini@hotmail.com", "123");

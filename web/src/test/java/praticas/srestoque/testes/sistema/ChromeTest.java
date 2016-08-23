@@ -65,6 +65,71 @@ public class ChromeTest {
         WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
     
     }
+    @Test
+    public void cadastrarFuncionarioNaoExistente(){
+         assertEquals("O titulo deve ser SrEstoque", "SrEstoque", driver.getTitle());
+        WebElement email = driver.findElement(By.id("loginForm:email"));
+        WebElement pass = driver.findElement(By.id("loginForm:senha"));
+        WebElement button = driver.findElement(By.id("loginButton"));
+        
+        
+        email.sendKeys("srestoque@admin.com");
+        pass.sendKeys("admin");
+        button.click();
+        
+        //driver.manage().timeouts().implicitlyWait(, TimeUnit.SECONDS);
+        
+        //cadastro_funcionario
+        WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
+        
+        
+        WebElement emailFunc = driver.findElement(By.id("funcionarioForm:emailFunc"));
+        WebElement Passfunc = driver.findElement(By.id("funcionarioForm:senhaFunc"));
+        WebElement cadastroFuncButton = driver.findElement(By.id("cadastroFuncionarioButton"));
+        
+        emailFunc.sendKeys("vmvini@hotmail.com");
+        Passfunc.sendKeys("123456");
+        
+        cadastroFuncButton.click();
+        
+         WebElement verificar = driver.findElement(By.id("funcionarioForm:mensagemFuncionarioForm"));
+         //btn btn-success
+         //Sucesso ao cadastrar funcionário
+         assertEquals("btn btn-success", verificar.getAttribute("class"));
+         
+    }
+    
+    
+    @Test
+    public void cadastrarFuncionarioJaExistente(){
+         assertEquals("O titulo deve ser SrEstoque", "SrEstoque", driver.getTitle());
+        WebElement email = driver.findElement(By.id("loginForm:email"));
+        WebElement pass = driver.findElement(By.id("loginForm:senha"));
+        WebElement button = driver.findElement(By.id("loginButton"));
+        
+        
+        email.sendKeys("srestoque@admin.com");
+        pass.sendKeys("admin");
+        button.click();
+        
+        //driver.manage().timeouts().implicitlyWait(, TimeUnit.SECONDS);
+        
+        //cadastro_funcionario
+        WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
+        
+        
+        WebElement emailFunc = driver.findElement(By.id("funcionarioForm:emailFunc"));
+        WebElement Passfunc = driver.findElement(By.id("funcionarioForm:senhaFunc"));
+        WebElement cadastroFuncButton = driver.findElement(By.id("cadastroFuncionarioButton"));
+        
+        emailFunc.sendKeys("srestoque@admin.com");
+        Passfunc.sendKeys("admin");
+        
+        cadastroFuncButton.click();
+        
+         WebElement verificar = driver.findElement(By.id("funcionarioForm:mensagemFuncionarioForm"));
+    }
+    
     
     @Test(expected = NoSuchElementException.class)
     public void testLoginErrado(){
@@ -83,5 +148,6 @@ public class ChromeTest {
         //cadastro_funcionario
         WebElement onlyToLoggedForm = driver.findElement(By.id("funcionarioForm"));
     }
+
 
 }

@@ -47,7 +47,7 @@
                         <version>2.19.1</version>
                         <configuration>
                             <excludes>
-                               
+                               <exclude>**/*ChromeTest.java</exclude>
                                 
                                
                             </excludes>
@@ -75,7 +75,7 @@
                             <excludes>
                                 <exclude>**/*ClienteTest.java</exclude>
                                 <exclude>**/*FuncionarioTest.java</exclude>
-                                <exclude>**/*ChromeTest.java</exclude>
+                                <exclude>**/*ProdutoTest.java</exclude>
                                
                             </excludes>
                         </configuration>
@@ -159,6 +159,14 @@
             <version>14.0</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+        </dependency>
+
           
         
         <!-- DEPENDENCIAS DE COMPILAÇÃO -->

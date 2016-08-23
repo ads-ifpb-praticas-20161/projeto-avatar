@@ -43,15 +43,16 @@ public class ProdutoTest {
     @Test(expected = RuntimeException.class)
     public void inserirProdutoComNomeVazio(){
         produtosMB.getProduto().setEstoque(12);
-        produtosMB.getProduto().setValor(new Float(2.4));
+        produtosMB.getProduto().setValor(2.4);
         produtosMB.getProduto().setDescricao("desc");
         produtosMB.getProduto().setNome("");
         produtosMB.cadastrarProduto();
     }
     
-    @Test(expected = NullPointerException.class)
-    public void inserirProdutoComValorNulo(){
+    @Test(expected = RuntimeException.class)
+    public void inserirProdutoComValorMenorQueZero(){
         produtosMB.getProduto().setEstoque(12);
+        produtosMB.getProduto().setValor(-1);
         produtosMB.getProduto().setDescricao("desc");
         produtosMB.getProduto().setNome("nome");
         produtosMB.cadastrarProduto();

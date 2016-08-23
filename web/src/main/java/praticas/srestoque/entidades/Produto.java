@@ -24,9 +24,9 @@ public class Produto {
     private String nome;
     private String descricao;
     private Integer estoque;
-    private Float valor;
+    private double valor;
 
-    public Produto(String nome, String descricao, Integer estoque, Float valor) {
+    public Produto(String nome, String descricao, Integer estoque, double valor) {
         this.nome = nome;
         this.descricao = descricao;
         this.estoque = estoque;
@@ -75,11 +75,11 @@ public class Produto {
         this.estoque = estoque;
     }
 
-    public Float getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
     

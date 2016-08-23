@@ -11,8 +11,10 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import praticas.srestoque.entidades.Cliente;
+import praticas.srestoque.excecoes.ChavePrimariaException;
 import praticas.srestoque.repositorio.ClienteRepository;
 import praticas.srestoque.sessionbeans.FuncionarioStateless;
+import praticas.srestoque.web.ProdutosMB;
 
 /**
  *
@@ -25,6 +27,8 @@ public class TesteIntegracao {
         return ShrinkWrap.create(JavaArchive.class, "test.jar" )
                 .addPackage(ClienteRepository.class.getPackage())
                 .addPackage(Cliente.class.getPackage())
+                .addPackage(ProdutosMB.class.getPackage())
+                .addPackage(ChavePrimariaException.class.getPackage())
                 .addPackage(FuncionarioStateless.class.getPackage())
                 .addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"))
                 .addAsResource("META-INF/persistence.xml");

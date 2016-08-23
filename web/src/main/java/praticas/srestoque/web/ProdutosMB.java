@@ -50,8 +50,7 @@ public class ProdutosMB {
             throw new NullPointerException("Nome nulo");
         if(produto.getNome().isEmpty())
             throw new RuntimeException("Nome vazio");
-        if(produto.getValor() == null)
-            throw new NullPointerException("Valor do produto está nulo");
+        
         if(produto.getValor() <= 0)
             throw new RuntimeException("Valor menor ou igual a zero");
     }

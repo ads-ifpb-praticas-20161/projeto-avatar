@@ -41,7 +41,7 @@
                     </li>
                     <li><h:link fragment="login" rendered="#{!sessaoFuncionario.estaLogado()}" class="button special">Entrar</h:link></li>
 
-                    <li> <h:form> <h:commandLink rendered="#{sessaoFuncionario.estaLogado()}" value="Sair" action="#{sessaoFuncionario.logoff()}" /> </h:form> </li>
+                    <li> <h:form> <h:commandLink id="sairLink" rendered="#{sessaoFuncionario.estaLogado()}" value="Sair" action="#{sessaoFuncionario.logoff()}" /> </h:form> </li>
                 </ul>
             </nav>
         </header>
@@ -215,7 +215,7 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:message for="funcionarioForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
+                                    <h:message id="mensagemFuncionarioForm" for="funcionarioForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
 
 
