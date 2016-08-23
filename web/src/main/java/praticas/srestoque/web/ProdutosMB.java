@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import praticas.srestoque.entidades.Produto;
 import praticas.srestoque.excecoes.ChavePrimariaException;
+import praticas.srestoque.excecoes.ValidacaoFormularioException;
 import praticas.srestoque.repositorio.ProdutoRepository;
 
 /**
@@ -34,8 +35,30 @@ public class ProdutosMB {
         produto = new Produto();
     }
     
+    private void validarProduto(){
+        if(produto == null)
+            throw new NullPointerException("Produto está nulo");
+        if(produto.getDescricao() == null)
+            throw new NullPointerException("Descrição do produto nula");
+        if(produto.getDescricao().isEmpty())
+            throw new RuntimeException("Descrição está vazia!");
+        if(produto.getEstoque() == null)
+            throw new NullPointerException("Quantidade em estoque está nula");
+        if(produto.getEstoque() <= 0)
+            throw new RuntimeException("Quantidade em estoque menor que zero");
+        if(produto.getNome() == null)
+            throw new NullPointerException("Nome nulo");
+        if(produto.getNome().isEmpty())
+            throw new RuntimeException("Nome vazio");
+        if(produto.getValor() == null)
+            throw new NullPointerException("Valor do produto está nulo");
+        if(produto.getValor() <= 0)
+            throw new RuntimeException("Valor menor ou igual a zero");
+    }
+    
     public void cadastrarProduto(){
         try{
+            validarProduto();
             pr.salvar(produto);
             String result = "Produto cadastrado com sucesso!";
             FacesContext.getCurrentInstance().addMessage("produtoForm", new FacesMessage(FacesMessage.SEVERITY_INFO, result, result));
