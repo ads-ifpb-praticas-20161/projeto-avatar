@@ -12,6 +12,7 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import praticas.srestoque.excecoes.ChavePrimariaException;
 
 /**
@@ -22,9 +23,17 @@ public abstract class Repository<E, T> {
     
     protected abstract EntityManager getEM();
     
-    protected abstract String getListAllQuery();
+    //protected abstract String getListAllQuery();
     
     protected abstract String getPrimaryKeyConstraintViolationMsg();
+    
+    protected abstract SearchStrategy[] getAvailableStrategies();
+    
+    protected SearchStrategy searchStrategy;
+    
+    public void setSearchStrategy(SearchStrategy searchStrategy){
+        this.searchStrategy = searchStrategy;
+    }
     
     private Class<E> entityClass;
     
@@ -70,7 +79,8 @@ public abstract class Repository<E, T> {
     
     public List<E> listar(){
         try{
-            Query query = getEM().createNativeQuery(getListAllQuery(), entityClass);
+            TypedQuery<E> query = getEM().createQuery(searchStrategy.getQuery(), entityClass);
+            searchStrategy.setParameter(query);
             List<E> list = query.getResultList();
             return list;
         }

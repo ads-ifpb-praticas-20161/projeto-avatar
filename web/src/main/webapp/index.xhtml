@@ -525,49 +525,22 @@
 
                                     <h4 style="margin:10px;">Pesquisar</h4>
                                     <div class="select-wrapper">
-                                        <h:selectOneMenu style="padding:10px;" id="buscaOpcao"  value="#{funcionarioMB.novoFuncionario.tipo}">
-                                            <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
-                                            <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
+                                        <h:selectOneMenu style="padding:10px;" id="buscaOpcao"  value="#{pesquisaMB.repositoryType}">
+                                            <f:selectItem itemValue="#{pesquisaMB.repositoryTypes[0]}" itemDescription="#{pesquisaMB.repositoryTypes[0]}" />
+                                            <f:selectItem itemValue="#{pesquisaMB.repositoryTypes[1]}" itemDescription="#{pesquisaMB.repositoryTypes[1]}" />
+                                            <f:selectItem itemValue="#{pesquisaMB.repositoryTypes[2]}" itemDescription="#{pesquisaMB.repositoryTypes[2]}" />
+                                       
                                         </h:selectOneMenu>
                                     </div>
 
-                                    <h4 style="margin:10px;" >Tipo de busca</h4>
-                                    <div class="select-wrapper">
-                                        <h:selectOneMenu style="padding:10px;" id="tipoBusca"  value="#{funcionarioMB.novoFuncionario.tipo}">
-                                            <f:selectItem itemValue="#{funcionarioMB.tipos[0]}" itemDescription="#{funcionarioMB.tipos[0]}" />
-                                            <f:selectItem itemValue="#{funcionarioMB.tipos[1]}" itemDescription="#{funcionarioMB.tipos[1]}" />
-                                        </h:selectOneMenu>
-                                    </div>
 
                                 </div>
 
 
-                                <h4 style="margin:10px;" >Termo de pesquisa</h4>
                                 <div class="12u$">
-                                    <input type="text" placeholder="Pesquisa" jsf:id="termoPesquisa" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                    <button id="buscarButton" class="button big" jsf:action="#{pesquisaMB.pesquisar()}">Pesquisar</button>
+
                                 </div>
-
-                                <h4 style="margin:10px;" >Resultados</h4>
-
-                                <div style="width:100%;" class="table-wrapper">
-                                    <section>
-                                        <h:dataTable  value="#{pesquisaMB.clientes}" var="cliente">
-
-                                            <h:column>
-                                                #{cliente.cpf}
-                                            </h:column>
-
-                                            <h:column>
-                                                #{cliente.nome}
-                                            </h:column>
-
-
-                                        </h:dataTable>
-                                    </section>
-                                </div>
-
-
-
 
 
 

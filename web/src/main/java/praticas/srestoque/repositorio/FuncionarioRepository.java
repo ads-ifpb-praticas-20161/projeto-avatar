@@ -20,6 +20,10 @@ public class FuncionarioRepository extends Repository<Funcionario, String> {
     @PersistenceContext
     private EntityManager em;
     
+    public FuncionarioRepository(){
+        searchStrategy = FuncionarioSearchStrategy.TODOS;
+    }
+    
     @Override
     protected EntityManager getEM() {
         return em;
@@ -28,10 +32,14 @@ public class FuncionarioRepository extends Repository<Funcionario, String> {
     protected  String getPrimaryKeyConstraintViolationMsg(){
         return "Já existe funcionário com esse email!";
     }
-
-    @Override
-    protected String getListAllQuery() {
-        return "SELECT * FROM Funcionario";
+    
+    protected SearchStrategy[] getAvailableStrategies(){
+       SearchStrategy[] tipos = FuncionarioSearchStrategy.class.getEnumConstants();
+       return tipos;
+    }
+    
+    public String toString(){
+        return "Funcionario";
     }
     
 }

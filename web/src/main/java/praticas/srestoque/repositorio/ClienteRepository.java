@@ -22,6 +22,10 @@ public class ClienteRepository extends Repository<Cliente, String> {
     @PersistenceContext
     private EntityManager em;
     
+    public ClienteRepository(){
+        searchStrategy = ClienteSearchStrategy.TODOS;
+    }
+    
     @Override
     protected EntityManager getEM() {
         return em;
@@ -31,13 +35,14 @@ public class ClienteRepository extends Repository<Cliente, String> {
         return "Já existe cliente com esse cpf!";
     }
     
-    
-    @Override
-    protected String getListAllQuery() {
-        return "SELECT * FROM Cliente";
+    protected SearchStrategy[] getAvailableStrategies(){
+       SearchStrategy[] tipos = ClienteSearchStrategy.class.getEnumConstants();
+       return tipos;
     }
     
-    
+    public String toString(){
+        return "Cliente";
+    }
     
     
 }

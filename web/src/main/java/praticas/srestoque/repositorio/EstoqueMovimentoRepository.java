@@ -20,6 +20,9 @@ public class EstoqueMovimentoRepository extends Repository<EstoqueMovimento, Int
     @PersistenceContext
     private EntityManager em;
     
+    public EstoqueMovimentoRepository(){
+    }
+    
     @Override
     protected EntityManager getEM() {
         return em;
@@ -28,10 +31,15 @@ public class EstoqueMovimentoRepository extends Repository<EstoqueMovimento, Int
     protected  String getPrimaryKeyConstraintViolationMsg(){
         return "Já existe movimento de estoque com esse id!";
     }
-
-    @Override
-    protected String getListAllQuery() {
-        return "SELECT * FROM EstoqueMovimento";
+    
+    protected SearchStrategy[] getAvailableStrategies(){
+       //SearchStrategy[] tipos = ProdutoSearchStrategy.class.getEnumConstants();
+       //return tipos;
+        throw new UnsupportedOperationException("");
     }
     
+    public String toString(){
+        return "EstoqueMovimento";
+    }
+
 }

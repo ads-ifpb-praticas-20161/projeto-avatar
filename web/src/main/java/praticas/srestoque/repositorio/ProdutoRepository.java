@@ -5,6 +5,7 @@
  */
 package praticas.srestoque.repositorio;
 
+import java.lang.reflect.Array;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,10 @@ public class ProdutoRepository extends Repository<Produto, Integer> {
     @PersistenceContext
     private EntityManager em;
     
+    public ProdutoRepository(){
+        searchStrategy = ProdutoSearchStrategy.TODOS;
+    }
+    
     @Override
     protected EntityManager getEM() {
         return em;
@@ -29,10 +34,14 @@ public class ProdutoRepository extends Repository<Produto, Integer> {
         return "Já existe produto com este id";
     }
     
-    
-    @Override
-    protected String getListAllQuery() {
-        return "SELECT * From Produto";
+    protected SearchStrategy[] getAvailableStrategies(){
+       SearchStrategy[] tipos = ProdutoSearchStrategy.class.getEnumConstants();
+       return tipos;
     }
+    
+    public String toString(){
+        return "Produto";
+    }
+    
     
 }
