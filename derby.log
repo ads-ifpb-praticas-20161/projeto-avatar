@@ -1,0 +1,8 @@
+----------------------------------------------------------------
+2016-08-23 12:26:09.700 GMT:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instância a816c00e-0156-b75d-7077-000011e27108
+no diretório de banco de dados /home/vmvini/Dropbox/ADS/QUINTO_PARTE2/PRATICAS/srestoque/target/derbydb  
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_91-b14
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
