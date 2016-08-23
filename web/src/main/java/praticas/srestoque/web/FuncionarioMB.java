@@ -45,11 +45,11 @@ public class FuncionarioMB {
         try{
             fs.cadastrar(novoFuncionario);
             String result = "Sucesso ao cadastrar funcionário";
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, result, result));
+            FacesContext.getCurrentInstance().addMessage("funcionarioForm", new FacesMessage(FacesMessage.SEVERITY_INFO, result, result));
         }
         catch(ValidacaoFormularioException | ChavePrimariaException e){
             
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
+            FacesContext.getCurrentInstance().addMessage("funcionarioForm", new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
             
         }
         finally{

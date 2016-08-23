@@ -40,7 +40,7 @@ public class SessaoFuncionario implements Serializable {
             ec.redirect("index.xhtml#home");
         }
         catch(AuthenticationException e){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
+            FacesContext.getCurrentInstance().addMessage("loginForm", new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
             
         }
         

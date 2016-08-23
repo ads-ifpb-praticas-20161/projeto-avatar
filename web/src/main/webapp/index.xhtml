@@ -163,9 +163,11 @@
                                 <button id="loginButton" class="button big" jsf:action="#{sessaoFuncionario.logar()}">Entrar</button>
 
                             </div>
+
                             <div class="12u$">
-                                <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                <h:message for="loginForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                             </div>
+
 
                         </div>
                     </form>
@@ -213,8 +215,9 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="funcionarioForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
 
                             </div>
 
@@ -263,8 +266,9 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="produtoForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
 
                             </div>
 
@@ -274,7 +278,7 @@
                 </div>
             </section>
         </ui:fragment>
-        
+
         <!-- CADASTRO DE CLIENTE -->
         <span id="cadastro_cliente"></span>
         <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
@@ -291,28 +295,53 @@
                             <div class="row uniform 50%">
 
                                 <div class="12u$">
-                                    <input type="text" jsf:id="nomeCliente" placeholder="Nome" jsf:value="#{funcionarioMB.novoFuncionario.email}" />
+                                    <input type="text" jsf:id="cpfCliente" placeholder="CPF" jsf:value="#{clientesMB.cliente.cpf}" />
                                 </div>
 
                                 <div class="12u$">
-                                    <input type="text" placeholder="Descrição" jsf:id="descProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
+                                    <input type="text" jsf:id="nomeCliente" placeholder="Nome" jsf:value="#{clientesMB.cliente.nome}" />
                                 </div>
 
                                 <div class="12u$">
-                                    <input type="text" placeholder="Estoque" jsf:id="estoqueProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
-                                </div>
-                                <div class="12u$">
-                                    <input type="text" placeholder="Valor" jsf:id="valorProd" jsf:value="#{funcionarioMB.novoFuncionario.senha}"  />
-                                </div>
-
-
-                                <div class="12u$">
-                                    <button id="cadastroProdutoButton" class="button big" jsf:action="#{funcionarioMB.cadastrar()}">Cadastrar</button>
-
+                                    <input type="text" jsf:id="telCliente" placeholder="Telefone1" jsf:value="#{clientesMB.tel1}" />
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <input type="text" jsf:id="tel2Cliente" placeholder="Telefone2" jsf:value="#{clientesMB.tel2}" />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Rua" jsf:id="ruaCliente" jsf:value="#{clientesMB.cliente.endereco.rua}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Bairro" jsf:id="bairroCliente" jsf:value="#{clientesMB.cliente.endereco.bairro}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="CEP" jsf:id="cepCliente" jsf:value="#{clientesMB.cliente.endereco.cep}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Número" jsf:id="numeroCliente" jsf:value="#{clientesMB.cliente.endereco.numero}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Cidade" jsf:id="cidadeCliente" jsf:value="#{clientesMB.cliente.endereco.cidade}"  />
+                                </div>
+
+                                <div class="12u$">
+                                    <input type="text" placeholder="Estado" jsf:id="estadoCliente" jsf:value="#{clientesMB.cliente.endereco.estado}"  />
+                                </div>
+
+
+                                <div class="12u$">
+                                    <button id="cadastroClienteButton" class="button big" jsf:update=":cadastroClientMsg" jsf:action="#{clientesMB.cadastrarCliente()}">Cadastrar</button>
+
+                                </div>
+
+                                <div class="12u$">
+                                    <h:message for="clienteForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
 
                             </div>
@@ -323,7 +352,7 @@
                 </div>
             </section>
         </ui:fragment>
-        
+
         <!-- CADASTRO DE ENTRADA -->
         <span id="cadastro_entrada"></span>
         <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
@@ -361,8 +390,9 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="entradaForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
 
                             </div>
 
@@ -372,8 +402,8 @@
                 </div>
             </section>
         </ui:fragment>
-        
-        
+
+
         <!-- CADASTRO DE VENDA -->
         <span id="cadastro_venda"></span>
         <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
@@ -411,8 +441,9 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="vendaForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
 
                             </div>
 
@@ -422,7 +453,7 @@
                 </div>
             </section>
         </ui:fragment>
-        
+
         <!-- CADASTRO DE SAIDA -->
         <span id="cadastro_saida"></span>
         <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
@@ -460,8 +491,10 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="saidaForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
+
 
                             </div>
 
@@ -471,8 +504,8 @@
                 </div>
             </section>
         </ui:fragment>
-        
-        
+
+
         <!-- BUSCA -->
         <span id="busca"></span>
         <ui:fragment  rendered="#{sessaoFuncionario.estaLogado()}">
@@ -510,8 +543,9 @@
                                 </div>
 
                                 <div class="12u$">
-                                    <h:messages globalOnly="true" infoClass="btn btn-success" errorClass="btn btn-danger"  layout="table" />
+                                    <h:message for="buscaForm"  infoClass="btn btn-success" errorClass="btn btn-danger" layout="table" />
                                 </div>
+
 
                             </div>
 
