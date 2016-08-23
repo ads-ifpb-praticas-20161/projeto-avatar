@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    
+    <endereco id="1" rua="Jose Dantas Nobre" bairro="Jardim Oasis" numero="371" cidade="Cajazeiras" estado="PB" />
+    
+    <cliente cpf="01753059437" nome="vmvini" endereco="1" />
+    
+    <telefones cliente="01753059437" telefone="5583999469464" />
+    <telefones cliente="01753059437" telefone="5583999469465" />
+    
+   
+    
+</dataset>
