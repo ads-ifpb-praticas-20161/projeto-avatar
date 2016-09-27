@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Lista de saída"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="container">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                   <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h:link class="navbar-brand"  outcome="/servico" value="SrEstoque"/>
+                            <h:graphicImage library="imagem" name="gentleman.png"  class="imgSR"/>
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Sobre o Sistema</a></li>
+                                        <li><a href="#">Principais questões</a></li>
+                                        <li><a href="#">Quem somos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Desenvolvedores</a></li>
+                                    </ul>
+                                    <li>
+                                        <h:link outcome="/index" value="Logout"/>
+
+                                    </li>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <h:commandLink action="#{saidaController.prepareCreate}" value="Criar saída"/>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+                <h:outputText escape="false" value="Lista de saída esta vazia" rendered="#{saidaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{saidaController.items.rowCount > 0}">
+                    <h:outputText value="#{saidaController.pagination.pageFirstItem + 1}..#{saidaController.pagination.pageLastItem + 1}/#{saidaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{saidaController.previous}" value="Prévio #{saidaController.pagination.pageSize}" rendered="#{saidaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{saidaController.next}" value="Próximo #{saidaController.pagination.pageSize}" rendered="#{saidaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{saidaController.items}" var="item" border="0" cellpadding="2" cellspacing="0"  class="table table-bordered">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codsaida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Total"/>
+                            </f:facet>
+                            <h:outputText value="#{item.total}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Frete"/>
+                            </f:facet>
+                            <h:outputText value="#{item.frete}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Imposto"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imposto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código da Loja"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lojaCodloja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código da Transportadora"/>
+                            </f:facet>
+                            <h:outputText value="#{item.transportadoraCodtransportadora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{saidaController.prepareView}" value="Visão"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{saidaController.prepareEdit}" value="Editar"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{saidaController.destroy}" value="Deletar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+             
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

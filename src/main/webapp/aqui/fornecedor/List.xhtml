@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Listar fornecedor"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="container">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                
+                
+                    <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h:link class="navbar-brand"  outcome="/servico" value="SrEstoque"/>
+                            <h:graphicImage library="imagem" name="gentleman.png"  class="imgSR"/>
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Sobre o Sistema</a></li>
+                                        <li><a href="#">Principais questões</a></li>
+                                        <li><a href="#">Quem somos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Desenvolvedores</a></li>
+                                    </ul>
+                                    <li>
+                                        <h:link outcome="/index" value="Logout"/>
+
+                                    </li>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <h:commandLink action="#{fornecedorController.prepareCreate}" value="Criar fornecedor"/>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+                
+                
+                <h:outputText escape="false" value="Lista de fornecedores vazia" rendered="#{fornecedorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{fornecedorController.items.rowCount > 0}">
+                    <h:outputText value="#{fornecedorController.pagination.pageFirstItem + 1}..#{fornecedorController.pagination.pageLastItem + 1}/#{fornecedorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{fornecedorController.previous}" value="Prévio #{fornecedorController.pagination.pageSize}" rendered="#{fornecedorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{fornecedorController.next}" value="Próximo #{fornecedorController.pagination.pageSize}" rendered="#{fornecedorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{fornecedorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" class="table table-bordered">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codfornecedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fornecedor"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fornecedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Endereco"/>
+                            </f:facet>
+                            <h:outputText value="#{item.endereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número"/>
+                            </f:facet>
+                            <h:outputText value="#{item.num}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Bairro"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bairro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CEP"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cep}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Contato"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contato}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CNPJ"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cnpj}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Inscrição"/>
+                            </f:facet>
+                            <h:outputText value="#{item.insc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Telefone"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cidade"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cidadeCodcidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{fornecedorController.prepareView}" value="Visão"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fornecedorController.prepareEdit}" value="Editar"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fornecedorController.destroy}" value="Deletar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

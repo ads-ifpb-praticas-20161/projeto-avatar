@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link rel="icon" href="resources/imagem/gentleman.ico" type="image/x-icon"></link>
+        <title>SrEstoque</title>
+
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+        <h:outputStylesheet library="css" name="dashboard.css" />
+        <h:outputScript library="bootstrap" name="js/jquery.js" />
+        <h:outputScript library="bootstrap" name="js/bootstrap.js" />
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">SrEstoque</a>                 
+                            <img src="resources/imagem/gentleman.png" class="imgSR"/>       
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Sobre o Sistema</a></li>
+                                        <li><a href="#">Principais questões</a></li>
+                                        <li><a href="sobre/sobre.html">Quem somos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Desenvolvedores</a></li>
+                                    </ul>
+                                    <li> <h:commandLink action="#{gerenciarPaginas.irLogin()}" value="Login"></h:commandLink></li>
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+            </h:form>
+        </div>
+
+        <div class="container">
+            <div class="jumbotron espaco">
+                <h1>Bem vindo ao SrEstoque.</h1>
+
+            </div>
+        </div> 
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-1">
+                        <img src="resources/imagem/foto.jpg"></img>
+                    </div>    
+                    <div class="col-md-10">
+                        <h3 class="text-muted"> Nós garantimos a integridade do seu estoque!!</h3>
+                    </div>
+                </div>
+            </div>
+        </footer>    
+
+    </h:body>
+
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Editar Saída"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form class="container">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h:link class="navbar-brand"  outcome="/servico" value="SrEstoque"/>
+
+                            <h:graphicImage library="imagem" name="gentleman.png"  class="imgSR"/>
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <h:commandLink action="#{saidaController.prepareCreate}" value="Criar saída"/>
+                                </li>
+                                <li>
+                                    <h:commandLink action="#{saidaController.prepareList}" value="Mostrar saídas" immediate="true"/>
+                                </li>
+
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Sobre o Sistema</a></li>
+                                        <li><a href="#">Principais questões</a></li>
+                                        <li><a href="#">Quem somos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Desenvolvedores</a></li>
+                                    </ul>
+                                    <li>
+                                        <h:link outcome="/index" value="Logout"/>
+                                    </li>
+
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+                <div class="container">
+                    <div class="jumbotron espaco">
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Código" for="codsaida" class="form-control"/>
+                            <h:inputText id="codsaida" value="#{saidaController.selected.codsaida}"  class="form-control" readonly="true"/>
+                            <h:outputLabel value="Total" for="total" class="form-control"/>
+                            <h:inputText id="total" value="#{saidaController.selected.total}"  class="form-control"/>
+                            <h:outputLabel value="Frete" for="frete" class="form-control"/>
+                            <h:inputText id="frete" value="#{saidaController.selected.frete}"  class="form-control"/>
+                            <h:outputLabel value="Imposto" for="imposto" class="form-control"/>
+                            <h:inputText id="imposto" value="#{saidaController.selected.imposto}"  class="form-control"/>
+                            <h:outputLabel value="Loja" for="lojaCodloja" class="form-control" />
+                            <h:selectOneMenu id="lojaCodloja" value="#{saidaController.selected.lojaCodloja}"  required="true" requiredMessage="O campo lojaCodloja é requerido" class="form-control">
+                                <f:selectItems value="#{lojaController.itemsAvailableSelectOne}" class="form-control"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Transportadora" for="transportadoraCodtransportadora" class="form-control"/>
+                            <h:selectOneMenu id="transportadoraCodtransportadora" value="#{saidaController.selected.transportadoraCodtransportadora}"  required="true" requiredMessage="O campo ransportadoraCodtransportadora é requerido" class="form-control">
+                                <f:selectItems value="#{transportadoraController.itemsAvailableSelectOne}" class="form-control"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+
+
+                        <h:commandLink action="#{saidaController.update}" value="Salvar" class="btn btn-success"/>
+                        <br />
+                        <br />
+                        <h:link outcome="View" value="Visão" class="btn btn-info"/>
+                        <br />
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
