@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link rel="icon" href="resources/imagem/gentleman.ico" type="image/x-icon"></link>
+        <title>Serviços</title>
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.css" />
+        <h:outputStylesheet library="bootstrap" name="css/estilo.css" />
+        <h:outputStylesheet library="css" name="dashboard.css" />
+        <h:outputScript library="bootstrap" name="js/jquery.js" />
+        <h:outputScript library="bootstrap" name="js/bootstrap.js" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">SrEstoque</a>                 
+
+                            <h:graphicImage library="imagem" name="gentleman.png"  class="imgSR"/>
+
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+
+
+                                <li> <h:link outcome="/conteudo/produto/List" value="Produto"/> </li>
+                                <li> <h:link outcome="/conteudo/categoria/List" value="Categoria"/> </li>
+
+                                <li>  <h:link outcome="/aqui/cidade/List" value="Cidade"/> </li>
+
+                                <li> <h:link outcome="/aqui/fornecedor/List" value="Fornecedores"/> </li>
+                                <li> <h:link outcome="/aqui/loja/List" value="Lojas"/></li>
+                                <li> <h:link outcome="/conteudo/usuario/List" value="Usuário"/></li>
+
+                                <li> <h:link outcome="/aqui/transportadora/List" value="Transportadoras"/></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">     
+                                    <li> <h:link outcome="/index" value="Logout"/></li>
+
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+            </div>
+
+            <!--Segundo painel-->
+
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+                                <li> <h:link outcome="/conteudo/entrada/List" value="Entrada"/></li>
+                                <li> <h:link outcome="/conteudo/itementrada/List" value="Item entrada"/></li>
+                                <li> <h:link outcome="/aqui/saida/List" value="Saidas"/></li>
+                                <li> <h:link outcome="/conteudo/itemsaida/List" value="Item saída"/></li>
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">     
+                                    <li> </li>
+
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+            </div>
+
+            <!--Terceiro painel-->
+
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+                                <li> <h:link outcome="/regras/mostra/Estoque" value="Estoque"/></li>
+                                <li> <h:link outcome="/regras/mostra/QuantidadeMinima" value="Abaixo do Minimo"/></li>
+                                <li> <h:link outcome="/regras/mostra/SeparadoPorFornecedor" value="Por Fornecedor"/></li>
+                                <li> <h:link outcome="/regras/mostra/PorCategoria" value="Por Categoria"/></li>
+                                <li> <h:link outcome="/regras/mostra/TempoMedio" value="Tempo médio"/></li>
+                                <li> <h:link outcome="/regras/mostra/TotalSaida" value="Saída por Loja"/></li>
+                                <li> <h:link outcome="/regras/mostra/Peso" value="Peso total"/></li>
+                                <li> <h:link outcome="/regras/mostra/FreteTotal" value="Frete total"/></li>
+                                <li> <h:link outcome="/regras/mostra/QuantidadeCategoria" value="Qtd por categoria"/></li>
+
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">     
+                                    <li> </li>
+
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+            </div>
+        </h:form>
+
+        <div class="container">
+            <div class="page-header">
+                <h1>Aqui temos os melhores trabalhando para você!</h1>
+            </div>
+            <p>Pode deixar conosco!</p>
+            <h3>Bem vindo ao mundo do estoque #{usuarioController.selected.nome}</h3>
+
+        </div> 
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-1">
+                        <img src="resources/imagem/foto.jpg"></img>
+                    </div>    
+                    <div class="col-md-10">
+                        <h3 class="text-muted"> Nós garantimos a integridade do seu estoque!!</h3>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </h:body>
+</html>
